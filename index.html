@@ -4,351 +4,403 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Synthetic Investment House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f7f8fb;
+  --bg:#f6f7fb;
+  --bg-2:#eef0f7;
   --panel:#ffffff;
-  --text:#111827;
-  --muted:#667085;
-  --line:#e7eaf0;
-  --accent:#4f46e5;
-  --accent-2:#7c3aed;
-  --soft:#eef2ff;
-  --green:#0f9f6e;
-  --amber:#c47a00;
-  --red:#c43d4b;
-  --shadow:0 20px 60px rgba(17,24,39,.08);
-  --radius:22px;
+  --ink:#0f172a;
+  --ink-2:#334155;
+  --muted:#64748b;
+  --line:#e2e6ef;
+  --line-2:#cbd2e0;
+  --accent:#4338ca;
+  --accent-2:#6d28d9;
+  --accent-soft:#eef0ff;
+  --navy:#0b1220;
+  --navy-2:#141d33;
+  --green:#0e9f6e;--green-soft:#e6f8f0;
+  --amber:#b45309;--amber-soft:#fff4e0;
+  --red:#c2414f;--red-soft:#fdeef0;
+  --teal:#0e7490;--teal-soft:#e3f6fa;
+  --shadow:0 18px 50px rgba(15,23,42,.07);
+  --shadow-sm:0 4px 14px rgba(15,23,42,.05);
+  --r:20px;--r-sm:14px;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  background:
-    radial-gradient(circle at 90% 5%, rgba(79,70,229,.08), transparent 28%),
-    radial-gradient(circle at 10% 20%, rgba(124,58,237,.06), transparent 24%),
-    var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Arial",sans-serif;
-  line-height:1.65;
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Heebo",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  line-height:1.65;font-size:16px;
+  -webkit-font-smoothing:antialiased;
 }
 a{text-decoration:none;color:inherit}
 button{font:inherit}
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-nav{
-  position:sticky;top:0;z-index:30;
-  backdrop-filter:blur(18px);
-  background:rgba(247,248,251,.84);
-  border-bottom:1px solid rgba(231,234,240,.8);
+b,strong{font-weight:700}
+.num,.mono{font-family:var(--mono);direction:ltr;unicode-bidi:isolate}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:40;background:rgba(246,247,251,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(226,230,239,.9)}
+.navin{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:17px;letter-spacing:-.01em}
+.logo{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;color:#fff;font-family:var(--mono);font-size:13px;font-weight:700;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 8px 20px rgba(67,56,202,.28)}
+.navlinks{display:flex;gap:22px;color:var(--muted);font-size:14px;font-weight:500}
+.navlinks a{padding:6px 0;border-bottom:2px solid transparent}
+.navlinks a:hover{color:var(--ink);border-color:var(--accent)}
+.nav-cta{font-size:13px;font-weight:700;padding:9px 14px;border-radius:999px;background:var(--ink);color:#fff}
+
+/* hero */
+.hero{padding:88px 0 64px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(700px 360px at 85% 0%, rgba(67,56,202,.10), transparent 60%),
+    radial-gradient(500px 300px at 5% 30%, rgba(109,40,217,.07), transparent 60%);
 }
-.navin{height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800}
-.logo{
-  width:38px;height:38px;border-radius:12px;
-  display:grid;place-items:center;color:white;
-  background:linear-gradient(135deg,var(--accent),var(--accent-2));
-  box-shadow:0 8px 24px rgba(79,70,229,.25)
-}
-.navlinks{display:flex;gap:18px;color:var(--muted);font-size:14px}
-.navlinks a:hover{color:var(--text)}
-.hero{padding:92px 0 58px}
-.kicker{
-  display:inline-flex;gap:8px;align-items:center;
-  padding:8px 12px;border-radius:999px;
-  background:var(--soft);color:var(--accent);font-weight:700;font-size:13px
-}
-h1{font-size:clamp(42px,6vw,78px);line-height:1.05;letter-spacing:-.035em;margin:18px 0 22px}
-.hero p{max-width:830px;color:var(--muted);font-size:20px;margin:0}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;position:relative}
+.kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 12px 7px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:13px}
+.kicker i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(67,56,202,.15)}
+h1{font-size:clamp(38px,4.9vw,58px);line-height:1.08;letter-spacing:-.03em;margin:20px 0 20px;font-weight:900}
+h1 .thin{color:var(--muted);font-weight:600}
+.lead{font-size:19px;color:var(--ink-2);max-width:560px;margin:0}
 .cta-row{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
-.btn{
-  border:0;border-radius:14px;padding:12px 18px;cursor:pointer;font-weight:750;
-  transition:.2s transform,.2s box-shadow,.2s background
-}
+.btn{border:0;border-radius:12px;padding:12px 18px;cursor:pointer;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:8px;transition:.18s transform,.18s box-shadow}
 .btn:hover{transform:translateY(-1px)}
-.btn-primary{background:var(--text);color:#fff;box-shadow:0 10px 25px rgba(17,24,39,.15)}
-.btn-secondary{background:#fff;border:1px solid var(--line);color:var(--text)}
-.section{padding:46px 0}
-.section h2{font-size:34px;margin:0 0 8px;letter-spacing:-.02em}
-.section-intro{color:var(--muted);margin:0 0 26px;max-width:780px}
+.btn-primary{background:var(--ink);color:#fff;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.btn-secondary{background:#fff;border:1px solid var(--line-2);color:var(--ink)}
+.btn-ghost{background:transparent;color:var(--accent);padding-inline:6px}
+.hero-stats{display:flex;gap:28px;margin-top:36px;color:var(--muted);font-size:13px;flex-wrap:wrap}
+.hero-stats b{display:block;color:var(--ink);font-size:20px;font-weight:800;letter-spacing:-.01em}
+
+/* hero decision card */
+.decision-card{background:var(--navy);color:#fff;border-radius:26px;padding:24px;box-shadow:0 30px 70px rgba(11,18,32,.35);position:relative;isolation:isolate}
+.decision-card::after{content:"";position:absolute;inset:0;border-radius:26px;background:linear-gradient(160deg,rgba(255,255,255,.08),transparent 40%);z-index:-1}
+.dc-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+.dc-label{font-size:11px;letter-spacing:.14em;color:#94a3b8;font-family:var(--mono)}
+.sim{font-size:10px;font-weight:700;letter-spacing:.08em;padding:5px 8px;border-radius:6px;background:rgba(245,158,11,.16);color:#fbbf24;font-family:var(--mono)}
+.dc-title{font-size:30px;font-weight:900;letter-spacing:-.02em;margin:0 0 4px}
+.dc-title .num{font-size:22px;color:#a5b4fc;margin-inline-start:8px}
+.dc-sub{color:#cbd5e1;font-size:14px;margin:0 0 16px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);font-size:12px;color:#e2e8f0}
+.chip .num{color:#fff;font-weight:700}
+.dc-votes{margin-top:18px;border-top:1px solid rgba(255,255,255,.08);padding-top:14px;display:grid;gap:8px}
+.vote{display:flex;align-items:center;gap:10px;font-size:13px;color:#cbd5e1}
+.vote .bar{flex:1;height:6px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.vote .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#818cf8,#a78bfa)}
+.vote .bar i.warn{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+.vote .num{width:26px;text-align:left;color:#fff;font-weight:700;font-size:12px}
+.vote .who{width:112px;direction:ltr;text-align:right;unicode-bidi:isolate}
+
+/* sections */
+.section{padding:64px 0}
+.section.alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section.dark{background:var(--navy);color:#fff}
+.eyebrow{direction:ltr;justify-content:flex-end;font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.eyebrow::after{content:"";width:34px;height:1px;background:var(--accent);opacity:.5}
+.dark .eyebrow{color:#a5b4fc}.dark .eyebrow::after{background:#a5b4fc}
+h2{font-size:clamp(28px,3.4vw,38px);line-height:1.15;margin:0 0 10px;letter-spacing:-.025em;font-weight:800}
+.intro{color:var(--muted);margin:0 0 30px;max-width:760px;font-size:17px}
+.dark .intro{color:#b6c0d3}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{
-  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
-  padding:24px;box-shadow:var(--shadow)
-}
-.pillar-num{
-  width:36px;height:36px;border-radius:12px;display:grid;place-items:center;
-  background:var(--soft);color:var(--accent);font-weight:800;margin-bottom:14px
-}
-.card h3{margin:0 0 8px;font-size:20px}
-.card p{margin:0;color:var(--muted)}
-.org{
-  display:grid;grid-template-columns:1fr;gap:16px;
-  padding:22px;border-radius:28px;
-  background:linear-gradient(180deg,#fff,rgba(255,255,255,.82));
-  border:1px solid var(--line);box-shadow:var(--shadow)
-}
-.org-top{
-  display:grid;grid-template-columns:1.2fr .8fr;gap:16px
-}
-.role{
-  border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff
-}
-.role strong{display:block;font-size:17px}
-.role small{color:var(--muted)}
-.agents{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.agent{
-  position:relative;border:1px solid var(--line);background:#fff;border-radius:16px;
-  padding:16px;cursor:pointer;transition:.2s ease;min-height:124px
-}
-.agent:hover{border-color:#cbd2e0;transform:translateY(-2px);box-shadow:0 14px 34px rgba(17,24,39,.07)}
-.agent .tag{font-size:12px;color:var(--accent);font-weight:800;margin-bottom:8px}
-.agent b{display:block;margin-bottom:4px}
-.agent span{font-size:13px;color:var(--muted)}
-.agent .more{
-  position:absolute;left:12px;bottom:10px;font-size:12px;color:var(--accent);font-weight:700
-}
-.flow{
-  display:grid;grid-template-columns:repeat(7,1fr);gap:10px;align-items:stretch
-}
-.step{
-  border-radius:18px;background:white;border:1px solid var(--line);padding:16px;min-height:125px;
-  display:flex;flex-direction:column;justify-content:space-between
-}
-.step .n{color:var(--accent);font-weight:800;font-size:12px}
-.step strong{font-size:15px}
-.step small{color:var(--muted)}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.metric{
-  display:flex;justify-content:space-between;align-items:flex-end;
-  border-bottom:1px solid var(--line);padding:14px 0
-}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--shadow-sm)}
+.card h3{margin:0 0 8px;font-size:19px;font-weight:800;letter-spacing:-.01em}
+.card p{margin:0;color:var(--ink-2)}
+.icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);margin-bottom:16px}
+.icon svg{width:22px;height:22px}
+.pill-num{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:700;margin-bottom:10px}
+.link{color:var(--accent);font-weight:700;font-size:14px;cursor:pointer;background:none;border:0;padding:0;display:inline-flex;align-items:center;gap:6px;margin-top:14px}
+.link:hover{text-decoration:underline}
+.note{padding:14px 16px;border-radius:12px;background:#f8fafc;border:1px solid var(--line);color:#475569;font-size:14px;margin-top:16px}
+.note b{color:var(--ink)}
+.dark .note{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);color:#cbd5e1}
+
+/* org map */
+.org{border:1px solid var(--line);border-radius:28px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+.org-head{display:grid;grid-template-columns:1.15fr .85fr;gap:0;border-bottom:1px solid var(--line)}
+.org-head > div{padding:22px 26px}
+.org-head > div + div{border-inline-start:1px solid var(--line);background:#fafbfe}
+.org-head strong{display:block;font-size:18px;font-weight:800}
+.org-head small{color:var(--muted);font-size:14px;display:block;margin-top:4px}
+.org-body{padding:22px 26px 26px}
+.group{margin-top:18px}
+.group:first-child{margin-top:0}
+.group-title{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin-bottom:10px}
+.group-title em{font-style:normal;font-family:var(--mono);font-size:12px;letter-spacing:.12em;direction:ltr;unicode-bidi:isolate}
+.group-title i{width:10px;height:10px;border-radius:3px;background:var(--gc,var(--accent))}
+.agents{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.agent{--gc:var(--accent);position:relative;border:1px solid var(--line);background:#fff;border-radius:16px;padding:16px 16px 40px;cursor:pointer;transition:.18s ease;min-height:132px;text-align:start}
+.agent:hover{border-color:var(--gc);transform:translateY(-2px);box-shadow:0 14px 30px rgba(15,23,42,.08)}
+.agent .tag{font-size:11px;color:var(--gc);font-weight:700;letter-spacing:.1em;font-family:var(--mono);margin-bottom:8px}
+.agent b{display:block;margin-bottom:4px;font-size:15px}
+.agent span{font-size:13px;color:var(--muted);line-height:1.55}
+.agent .more{position:absolute;inset-inline-end:14px;bottom:12px;font-size:12px;color:var(--gc);font-weight:700}
+.agent.alpha{background:linear-gradient(160deg,#fff,#f5f3ff);border-style:dashed}
+.g-context{--gc:var(--teal)}.g-security{--gc:var(--accent)}.g-challenge{--gc:var(--red)}.g-free{--gc:var(--amber)}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;position:relative}
+.step{border-radius:16px;background:#fff;border:1px solid var(--line);padding:16px;min-height:130px;display:flex;flex-direction:column;gap:6px;position:relative}
+.step .n{font-family:var(--mono);color:var(--accent);font-weight:700;font-size:12px}
+.step strong{font-size:15px;line-height:1.3}
+.step small{color:var(--muted);font-size:13px;line-height:1.5}
+.step::after{content:"";position:absolute;top:50%;inset-inline-start:-10px;width:10px;height:2px;background:var(--line-2)}
+.step:first-child::after{display:none}
+.step.final{background:var(--ink);color:#fff;border-color:var(--ink)}
+.step.final .n{color:#a5b4fc}.step.final small{color:#cbd5e1}
+.dark .step{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);color:#fff}
+.dark .step small{color:#b6c0d3}.dark .step .n{color:#a5b4fc}.dark .step::after{background:rgba(255,255,255,.15)}
+
+/* metrics */
+.metric{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding:13px 0}
 .metric:last-child{border-bottom:none}
 .metric span{color:var(--muted);font-size:14px}
-.metric b{font-size:20px}
-.status{
-  display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;
-  background:#ecfdf3;color:var(--green);font-weight:800;font-size:13px
-}
-.dot{width:8px;height:8px;border-radius:50%;background:currentColor}
-.dashboard{
-  display:grid;grid-template-columns:1.2fr .8fr;gap:18px
-}
-.panel{
-  background:white;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow)
-}
-.panel h4{margin:0 0 14px}
-.action{
-  display:flex;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)
-}
+.metric b{font-size:18px;font-weight:800;letter-spacing:-.01em}
+.metric b.pos{color:var(--green)}.metric b.neg{color:var(--red)}
+.status{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:var(--green-soft);color:var(--green);font-weight:800;font-size:12px;font-family:var(--mono);letter-spacing:.06em}
+.dot{width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 3px rgba(14,159,110,.18)}
+
+/* dashboard mock */
+.dashboard{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.panel h4{margin:0 0 14px;font-size:15px;font-weight:800;display:flex;justify-content:space-between;align-items:center}
+.panel h4 small{font-weight:500;color:var(--muted);font-size:12px}
+.big{font-size:36px;font-weight:900;letter-spacing:-.02em;line-height:1}
+.big small{font-size:14px;color:var(--muted);font-weight:500;margin-inline-start:8px;letter-spacing:0}
+.spark{width:100%;height:64px;margin:14px 0 6px;display:block}
+.action{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
 .action:last-child{border-bottom:none}
-.badge{padding:5px 8px;border-radius:9px;font-size:12px;font-weight:800;white-space:nowrap}
-.buy{background:#ecfdf3;color:var(--green)}
-.watch{background:#fff7e8;color:var(--amber)}
-.sell{background:#fff0f1;color:var(--red)}
-.progress{height:10px;background:#eef0f4;border-radius:999px;overflow:hidden}
-.progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:68%}
-.committee{
-  display:grid;grid-template-columns:1fr .85fr;gap:18px
-}
-.thread{display:flex;flex-direction:column;gap:12px}
-.msg{
-  border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:#fff
-}
-.msg b{display:block;font-size:13px;margin-bottom:4px}
-.msg p{margin:0;color:#394150}
-.msg.highlight{border-color:#c7d2fe;background:#f8faff}
-.decision{
-  background:#111827;color:#fff;border-radius:22px;padding:22px
-}
-.decision small{color:#cfd4dc}
-.decision h3{font-size:28px;margin:6px 0 12px}
-.chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{padding:7px 9px;border-radius:999px;background:rgba(255,255,255,.1);font-size:12px}
+.action b{font-family:var(--mono);font-size:15px}
+.action .why{color:var(--muted);font-size:13px;margin-top:2px}
+.badge{padding:6px 10px;border-radius:9px;font-size:12px;font-weight:800;white-space:nowrap;font-family:var(--mono)}
+.buy{background:var(--green-soft);color:var(--green)}
+.watch{background:var(--amber-soft);color:var(--amber)}
+.sell{background:var(--red-soft);color:var(--red)}
+.progress{height:10px;background:#eef0f4;border-radius:999px;overflow:hidden;position:relative}
+.progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:44%;border-radius:999px}
+.progress-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-family:var(--mono);margin-top:6px}
+.delta{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:14px}
+.delta .from{color:var(--muted)}
+.delta .to{color:var(--green);font-weight:700}
+
+/* committee thread */
+.committee{display:grid;grid-template-columns:1fr .85fr;gap:18px}
+.thread{display:flex;flex-direction:column;gap:10px}
+.msg{border:1px solid var(--line);border-radius:14px;padding:13px 16px;background:#fff;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.msg .av{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;background:var(--accent)}
+.msg .av.t{background:var(--teal)}.msg .av.r{background:var(--red)}.msg .av.a{background:var(--amber)}.msg .av.f{background:var(--accent-2)}
+.msg b{display:block;font-size:13px;margin-bottom:2px}
+.msg p{margin:0;color:var(--ink-2);font-size:14px}
+.msg.highlight{border-color:#c7d2fe;background:#f8f9ff}
+.decision{background:var(--navy);color:#fff;border-radius:var(--r);padding:24px;display:flex;flex-direction:column}
+.decision small{color:#94a3b8;font-family:var(--mono);font-size:11px;letter-spacing:.14em}
+.decision h3{font-size:28px;margin:8px 0 12px;font-weight:900;letter-spacing:-.02em}
+.decision p{color:#cbd5e1;margin:18px 0 0;font-size:14px;flex:1}
+
+/* timeline */
 .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.version{
-  background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px
-}
-.version.current{border-color:#a5b4fc;box-shadow:0 0 0 3px #eef2ff}
-.version .v{color:var(--accent);font-weight:800}
-.footer{padding:60px 0 80px;color:var(--muted);text-align:center}
-.modal{
-  position:fixed;inset:0;background:rgba(15,23,42,.36);backdrop-filter:blur(6px);
-  display:none;align-items:center;justify-content:center;padding:24px;z-index:50
-}
+.version{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;position:relative}
+.version.current{border-color:#a5b4fc;box-shadow:0 0 0 4px var(--accent-soft)}
+.version.next{border-style:dashed}
+.version .v{font-family:var(--mono);color:var(--accent);font-weight:700;font-size:12px;letter-spacing:.08em}
+.version h3{margin:6px 0 8px;font-size:17px}
+.version p{margin:0;color:var(--muted);font-size:14px}
+
+/* layers */
+.layers{display:grid;gap:10px}
+.layer{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;padding:18px 22px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+.layer .n{font-family:var(--mono);font-size:12px;color:#a5b4fc;letter-spacing:.12em}
+.layer strong{display:block;font-size:17px}
+.layer small{color:#b6c0d3;font-size:14px}
+.layer.top{background:linear-gradient(135deg,rgba(67,56,202,.35),rgba(109,40,217,.25));border-color:rgba(165,180,252,.35)}
+
+/* stepper */
+.stepper{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;counter-reset:s}
+.stepper .step{min-height:118px}
+
+.dashboard>*,.committee>*,.split>*,.grid3>*{min-width:0}
+.panel{overflow:hidden}
+@media(max-width:620px){.big{font-size:30px}.big small{display:block;margin:6px 0 0}}
+/* footer */
+.footer{padding:56px 0 70px;color:var(--muted);text-align:center;font-size:14px}
+.footer b{color:var(--ink);display:block;font-size:16px;margin-bottom:6px}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(11,18,32,.5);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:24px;z-index:60}
 .modal.open{display:flex}
-.modal-box{
-  width:min(680px,100%);background:white;border-radius:24px;padding:26px;
-  box-shadow:0 30px 90px rgba(15,23,42,.25);position:relative
-}
-.close{
-  position:absolute;left:16px;top:16px;border:0;background:#f2f4f7;border-radius:10px;
-  width:36px;height:36px;cursor:pointer;font-size:20px
-}
-.modal-box h3{margin-top:0;font-size:25px}
-.modal-box p{color:var(--muted)}
-.modal-box ul{padding-right:20px}
-.note{
-  padding:14px 16px;border-radius:14px;background:#f8fafc;border:1px solid var(--line);color:#475467
-}
+.modal-box{width:min(720px,100%);max-height:88vh;overflow:auto;background:#fff;border-radius:24px;padding:30px 30px 26px;box-shadow:0 40px 100px rgba(11,18,32,.35);position:relative}
+.close{position:absolute;inset-inline-start:16px;top:16px;border:0;background:#f1f5f9;border-radius:10px;width:36px;height:36px;cursor:pointer;font-size:20px;color:var(--ink)}
+.modal-box .tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--accent);margin-bottom:6px}
+.modal-box h3{margin:0 0 14px;font-size:26px;font-weight:900;letter-spacing:-.02em}
+.modal-box h4{margin:18px 0 6px;font-size:15px}
+.modal-box p{color:var(--ink-2);margin:0 0 10px}
+.modal-box ul,.modal-box ol{padding-inline-start:22px;color:var(--ink-2);margin:6px 0 12px}
+.modal-box li{margin:3px 0}
+
 @media(max-width:980px){
-  .grid3,.agents,.timeline{grid-template-columns:repeat(2,1fr)}
+  .hero-grid{grid-template-columns:1fr}
+  .grid3,.agents,.timeline,.stepper{grid-template-columns:repeat(2,1fr)}
   .flow{grid-template-columns:repeat(2,1fr)}
-  .org-top,.split,.dashboard,.committee{grid-template-columns:1fr}
+  .step::after{display:none}
+  .org-head,.split,.dashboard,.committee{grid-template-columns:1fr}
+  .org-head > div + div{border-inline-start:0;border-top:1px solid var(--line)}
   .navlinks{display:none}
 }
 @media(max-width:620px){
-  .wrap{padding:0 16px}
-  .hero{padding-top:62px}
-  .grid3,.agents,.timeline,.flow{grid-template-columns:1fr}
-  h1{font-size:44px}
-  .hero p{font-size:17px}
+  .wrap{padding:0 18px}
+  .hero{padding-top:56px}
+  .grid3,.agents,.timeline,.flow,.stepper{grid-template-columns:1fr}
+  h1{font-size:38px}
+  .lead{font-size:17px}
+  .layer{grid-template-columns:1fr}
 }
-
-details.agent-detail{
-  margin-top:12px;border-top:1px solid var(--line);padding-top:10px;
-}
-details.agent-detail summary{
-  list-style:none;cursor:pointer;color:var(--accent);font-weight:800;font-size:12px;
-}
-details.agent-detail summary::-webkit-details-marker{display:none}
-details.agent-detail summary::before{content:"＋";display:inline-block;margin-left:6px}
-details.agent-detail[open] summary::before{content:"−"}
-.agent-detail-body{
-  padding-top:10px;color:#475467;font-size:13px;line-height:1.7
-}
-.agent-detail-body b{color:var(--text);display:inline}
-
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap navin">
-    <div class="brand"><div class="logo">AI</div><span>Synthetic Investment House</span></div>
+    <a class="brand" href="#top"><span class="logo">SIH</span><span>Synthetic Investment House</span></a>
     <div class="navlinks">
       <a href="#vision">החזון</a>
-      <a href="#org">הסוכנים</a>
+      <a href="#org">הארגון</a>
       <a href="#flow">איך זה עובד</a>
-      <a href="#calibration">כיול</a><a href="#shadow">Shadow Portfolio</a>
+      <a href="#proof">המבחן</a>
+      <a href="#shadow">Shadow Portfolio</a>
       <a href="#ux">הממשק</a>
+      <a href="#evidence">מחקר</a>
     </div>
+    <a class="nav-cta" href="#org">הכירו את הארגון</a>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="wrap">
-    <span class="kicker">Personal AI Investment Committee</span>
-    <h1>לא עוד AI שבוחר מניות.<br/>בית השקעות סינתטי שלומד להשתפר.</h1>
-    <p>
-      במקום לבקש ממודל אחד לבחור מניה, המערכת בונה ארגון השקעות שלם: מומחי AI עם תפקידים שונים,
-      ועדת השקעות, ביקורת פנימית, תיק וירטואלי חי ומנגנון למידה. המטרה פשוטה למדידה:
-      האם הארגון הזה מקבל החלטות טובות יותר מהמדד — וטובות יותר מ-AI יחיד וחזק?
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#org">הכירו את הארגון</a>
-      <a class="btn btn-secondary" href="#ux">ראו איך המשתמש פוגש את המערכת</a>
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker"><i></i>Personal AI Investment Committee</span>
+      <h1>לא עוד AI שבוחר מניות.<br/><span class="thin">בית השקעות סינתטי</span><br/>שלומד להשתפר.</h1>
+      <p class="lead">
+        במקום לבקש ממודל אחד לבחור מניה, המערכת בונה ארגון השקעות שלם: מומחי AI עם תפקידים שונים,
+        ועדת השקעות, ביקורת פנימית, תיק וירטואלי חי ומנגנון למידה. המטרה פשוטה למדידה:
+        האם הארגון הזה מקבל החלטות טובות יותר מהמדד, וטובות יותר מ-AI יחיד וחזק?
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#org">הכירו את הארגון</a>
+        <a class="btn btn-secondary" href="#ux">איך המשתמש פוגש את המערכת</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>12</b>סוכנים מתמחים</div>
+        <div><b>1</b>ועדת השקעות</div>
+        <div><b>0 ₪</b>כסף אמיתי בשלב Shadow</div>
+        <div><b>3</b>Baselines לנצח</div>
+      </div>
+    </div>
+
+    <div class="decision-card" aria-label="דוגמה להחלטת ועדה">
+      <div class="dc-top">
+        <span class="dc-label">COMMITTEE DECISION</span>
+        <span class="sim">SIMULATED</span>
+      </div>
+      <h3 class="dc-title">BUY GOOG <span class="num">3%</span></h3>
+      <p class="dc-sub">החלטה חיובית, גודל פוזיציה מוגבל בגלל Event Risk לפני דוחות.</p>
+      <div class="chips">
+        <span class="chip">Score <span class="num">82</span></span>
+        <span class="chip">Confidence <span class="num">78</span></span>
+        <span class="chip">Urgency <span class="num">MED</span></span>
+        <span class="chip">Risk <span class="num">MED</span></span>
+      </div>
+      <div class="dc-votes">
+        <div class="vote"><span class="who">Technical</span><span class="bar"><i style="width:88%"></i></span><span class="num">88</span></div>
+        <div class="vote"><span class="who">Fundamental</span><span class="bar"><i style="width:84%"></i></span><span class="num">84</span></div>
+        <div class="vote"><span class="who">Momentum</span><span class="bar"><i style="width:80%"></i></span><span class="num">80</span></div>
+        <div class="vote"><span class="who">Valuation</span><span class="bar"><i class="warn" style="width:52%"></i></span><span class="num">52</span></div>
+        <div class="vote"><span class="who">Devil's Adv.</span><span class="bar"><i class="warn" style="width:40%"></i></span><span class="num">40</span></div>
+      </div>
     </div>
   </div>
 </header>
 
 <section class="section" id="vision">
   <div class="wrap">
+    <div class="eyebrow">01 / VISION</div>
     <h2>שלושת עמודי התווך</h2>
-    <p class="section-intro">המערכת נבנית סביב ארגון, אמון ושקיפות — לא סביב המלצה חד־פעמית.</p><details class="agent-detail"><summary>הסבר מפורט על עמודי התווך</summary><div class="agent-detail-body">
-<b>1. בית השקעות סינתטי:</b> ההחלטה נוצרת משילוב מומחים, ביקורת, מחלוקת ווועדה.<br><br>
-<b>2. Shadow Portfolio & Trust:</b> המערכת מוכיחה את עצמה על נתוני שוק אמיתיים לפני כסף אמיתי.<br><br>
-<b>3. Explainability & Participation:</b> המשתמש יכול לקבל רק את התוצאה, או להיכנס לעומק ולהשתתף בדיון.
-</div></details>
+    <p class="intro">המערכת נבנית סביב ארגון, אמון ושקיפות, לא סביב המלצה חד־פעמית.</p>
     <div class="grid3">
       <div class="card">
-        <div class="pillar-num">1</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="6" r="3"/><circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/><path d="M12 9v3M7.5 15l3-3M16.5 15l-3-3"/></svg></div>
         <h3>בית השקעות סינתטי</h3>
         <p>צוות מומחים עם תפקידים שונים, דיון מקצועי, ועדה, מנהל תיק ודינמיקה ארגונית שנמדדת לאורך זמן.</p>
       </div>
       <div class="card">
-        <div class="pillar-num">2</div>
-        <h3>Shadow Portfolio & Trust</h3>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Shadow Portfolio &amp; Trust</h3>
         <p>המערכת מריצה כסף וירטואלי מול נתוני שוק אמיתיים ומוכיחה את עצמה לפני שמאמצים המלצות בכסף אמיתי.</p>
       </div>
       <div class="card">
-        <div class="pillar-num">3</div>
-        <h3>Explainable & Participatory</h3>
-        <p>המשתמש יכול להסתפק בהחלטה — או להיכנס ל"חדר הוועדה", לצפות, לשאול ולהשתתף.</p>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v11H8l-4 4V5z"/><path d="M8 9h8M8 12h5"/></svg></div>
+        <h3>Explainable &amp; Participatory</h3>
+        <p>המשתמש יכול להסתפק בהחלטה, או להיכנס ל"חדר הוועדה", לצפות, לשאול ולהשתתף.</p>
       </div>
     </div>
+    <button class="link" onclick="openExplainer('pillars')">למה דווקא שלושת אלה? &larr;</button>
   </div>
 </section>
 
-<section class="section" id="org">
+<section class="section alt" id="org">
   <div class="wrap">
+    <div class="eyebrow">02 / ORGANIZATION</div>
     <h2>מפת הארגון</h2>
-    <p class="section-intro">כל Agent הוא מומחה בעל שאלה אחרת. לחצו על כל סוכן כדי להבין את תפקידו.</p>
+    <p class="intro">כל Agent הוא מומחה עם שאלה אחת משלו. לחצו על סוכן כדי לקרוא מה הוא בודק, ואיך הוא תורם לוועדה.</p>
 
     <div class="org">
-      <div class="org-top">
-        <div class="role">
+      <div class="org-head">
+        <div>
           <strong>Investment Committee</strong>
-          <small>מכריעה בין העמדות ומייצרת Recommendation, Confidence, Urgency ו-Position Size.</small>
+          <small>מכריעה בין העמדות ומייצרת Recommendation, Confidence, Urgency ו-Position Size. לא ממוצע פשוט: משקלים תלויי Regime, Deal Breakers, Portfolio Fit ו-Event Risk.</small>
         </div>
-        <div class="role">
+        <div>
           <strong>Organizational Intelligence Agent</strong>
-          <small>מסתכל על הדינמיקה, מפתח את הסוכנים ומשפר את הארגון עצמו.</small><div style="margin-top:10px"><details class="agent-detail"><summary>איך זה עובד?</summary><div class="agent-detail-body">
-Organizational Intelligence Agent הוא “מנהל הפיתוח הארגוני” של הבית הסינתטי. הוא בודק מי תרם מידע ייחודי, מי היה Overconfident, האם נוצר Groupthink, האם דעה נכונה של מיעוט נדרסה, ואילו סוכנים חופפים מדי. לאחר מכן הוא מייצר משימות שיפור לסוכנים ולתהליך.
-</div></details></div>
+          <small>מסתכל על הדינמיקה, מפתח את הסוכנים ומשפר את הארגון עצמו.</small>
+          <button class="link" onclick="openExplainer('orgintel')">איך זה עובד? &larr;</button>
         </div>
       </div>
 
-      <div class="agents">
-        <div class="agent" data-key="macro"><div class="tag">GLOBAL CONTEXT</div><b>Macro & Geopolitical</b><span>ריבית, אינפלציה, מלחמות, בחירות, סחר ומגמות גלובליות.</span><details class="agent-detail">
-          <summary>פתחו הסבר מפורט</summary>
-          <div class="agent-detail-body"><b>Macro &amp; Geopolitical Agent</b><br><br>המטרה: להבין אילו כוחות חיצוניים יכולים לשנות את סביבת ההשקעה, גם כשהחברה עצמה עדיין לא השתנתה.<br><br>בודק ריבית, אינפלציה, בנקים מרכזיים, צמיחה/מיתון, בחירות, מכסים, מלחמות, סנקציות, סחר, מטבעות, סחורות, רגולציה ומגפות.<br><br>התרומה לוועדה: לתרגם אירוע גלובלי להשפעה אפשרית על שוק, סקטור וחברה — מי נפגע, מי מרוויח, והאם צריך לשנות Risk או Exposure.</div>
-        </details></div>
-        <div class="agent" data-key="regime"><div class="tag">MARKET STATE</div><b>Market Regime</b><span>האם השוק Bull, Neutral או Risk Off ומה רמת הסיכון הכללית.</span><details class="agent-detail">
-          <summary>פתחו הסבר מפורט</summary>
-          <div class="agent-detail-body"><b>Market Regime Agent</b><br><br>המטרה: לקבוע באיזו סביבת שוק אנחנו נמצאים לפני שמנתחים מניה בודדת.<br><br>מסווג למשל Bull / Neutral / Risk Off ומוסיף Flags כמו High Volatility או Liquidity Stress.<br><br>ה-Regime משפיע על רף BUY, Position Size, Cash, והמשקל היחסי של Signals שונים.</div>
-        </details></div>
-        <div class="agent" data-key="sector"><div class="tag">CAPITAL FLOWS</div><b>Sector Rotation</b><span>לאן הכסף זורם, אילו סקטורים מתחזקים ואילו נחלשים.</span><details class="agent-detail">
-          <summary>פתחו הסבר מפורט</summary>
-          <div class="agent-detail-body"><b>Sector Rotation Agent</b><br><br>המטרה: לזהות לאן הכסף זורם בין סקטורים ותמות.<br><br>בודק Leadership, מעבר בין Growth/Value, Defensive/Cyclical, התחזקות או היחלשות של תמות, והאם הזדמנות היא Company-specific או Sector-wide.<br><br>חברה טובה בסקטור חלש עשויה לקבל יחס שונה מחברה טובה בסקטור חזק.</div>
-        </details></div>
-        <div class="agent" data-key="technical"><div class="tag">ENTRY / EXIT</div><b>Technical</b><span>גרפים, מגמות, פריצות, Pullback, תמיכות, התנגדויות ותזמון.</span><details class="agent-detail">
-          <summary>פתחו הסבר מפורט</summary>
-          <div class="agent-detail-body"><b>Technical Agent</b><br><br>המטרה: לבדוק האם המבנה הטכני מתאים לכניסה, המתנה או יציאה עכשיו.<br><br>בודק מגמות, Moving Averages, תמיכות/התנגדויות, Breakout, Pullback, Consolidation, Volume, Volatility ו-Technical Invalidation.<br><br>הבדל חשוב: Technical שואל “האם זה זמן טוב לפעול?”, בעוד Momentum שואל “האם יש כוח מתמשך?”.</div>
-        </details></div>
+      <div class="org-body">
+        <div class="group g-context">
+          <div class="group-title"><i></i><em>CONTEXT</em> הסביבה שבה כולם פועלים</div>
+          <div class="agents">
+            <button class="agent g-context" data-key="macro"><div class="tag">GLOBAL CONTEXT</div><b>Macro &amp; Geopolitical</b><span>ריבית, אינפלציה, מלחמות, בחירות, סחר ומגמות גלובליות.</span><span class="more">פרטים &larr;</span></button>
+            <button class="agent g-context" data-key="regime"><div class="tag">MARKET STATE</div><b>Market Regime</b><span>Bull, Neutral או Risk Off, ומה רמת הסיכון הכללית.</span><span class="more">פרטים &larr;</span></button>
+            <button class="agent g-context" data-key="sector"><div class="tag">CAPITAL FLOWS</div><b>Sector Rotation</b><span>לאן הכסף זורם, אילו סקטורים מתחזקים ואילו נחלשים.</span><span class="more">פרטים &larr;</span></button>
+            <button class="agent g-context" data-key="sentiment"><div class="tag">MARKET MIND</div><b>Sentiment</b><span>מה השוק חושב ומרגיש: אנליסטים, שיח, Hype, Fear ושינוי בציפיות.</span><span class="more">פרטים &larr;</span></button>
+          </div>
+        </div>
 
-        <div class="agent" data-key="momentum"><div class="tag">CONTINUATION</div><b>Momentum</b><span>האם למניה יש כוח מתמשך ו-Relative Strength מול השוק והסקטור.</span><details class="agent-detail">
-          <summary>פתחו הסבר מפורט</summary>
-          <div class="agent-detail-body"><b>Momentum Agent</b><br><br>המטרה: לבדוק האם למניה יש כוח מתמשך ו-Relative Strength.<br><br>בודק ביצועים בטווחים שונים, חוזק מול השוק והסקטור, Acceleration/Deceleration, Earnings Momentum, Estimate Revisions ו-Volume confirmation.<br><br>מנסה להבדיל בין Healthy Momentum לבין Overheated / Crowded Trade.</div>
-        </details></div>
-        <div class="agent" data-key="fundamental"><div class="tag">BUSINESS QUALITY</div><b>Fundamental</b><span>צמיחה, רווחיות, תזרים, חוב, ROIC ואיכות העסק.</span><details class="agent-detail">
-          <summary>פתחו הסבר מפורט</summary>
-          <div class="agent-detail-body"><b>Fundamental Agent</b><br><br>המטרה: לבדוק האם העסק עצמו איכותי, בריא ומשתפר.<br><br>בודק Revenue, EPS, Margins, Free Cash Flow, Debt, ROIC, Balance Sheet, Guidance, איכות הנהלה ויתרון תחרותי.<br><br>מסווג את העסק כ-Improving / Stable / Deteriorating.<br><br>Fundamental אינו זהה ל-Value Investing: הוא בודק את העסק; Valuation בודק את המחיר.</div>
-        </details></div>
-        <div class="agent" data-key="valuation"><div class="tag">PRICE VS VALUE</div><b>Valuation</b><span>האם המחיר הנוכחי מוצדק ביחס לאיכות, לצמיחה ולציפיות.</span><details class="agent-detail">
-          <summary>פתחו הסבר מפורט</summary>
-          <div class="agent-detail-body"><b>Valuation Agent</b><br><br>המטרה: לבדוק האם המחיר הנוכחי הגיוני ביחס לאיכות, לצמיחה ולציפיות.<br><br>משווה Valuation נוכחי להיסטוריה, לסקטור, לקצב הצמיחה ולציפיות שכבר מגולמות במחיר, תוך התייחסות ל-Margin of Safety.<br><br>מבדיל בין Expensive but justified, Expensive and vulnerable, Attractive valuation ו-Cheap for a reason.</div>
-        </details></div>
-        <div class="agent" data-key="sentiment"><div class="tag">MARKET MIND</div><b>Sentiment</b><span>מה השוק חושב ומרגיש: אנליסטים, שיח, Hype, Fear ושינוי בציפיות.</span><details class="agent-detail">
-          <summary>פתחו הסבר מפורט</summary>
-          <div class="agent-detail-body"><b>Sentiment Agent</b><br><br>המטרה: להבין מה השוק חושב ומרגיש לגבי החברה, ובעיקר לאיזה כיוון הסנטימנט משתנה.<br><br>בודק Analyst tone, Upgrades/Downgrades, News tone, שיח ברשתות, Hype, Fear, Skepticism ו-Expectation shifts.<br><br>News אומר מה קרה; Sentiment אומר איך השוק מפרש את זה.</div>
-        </details></div>
+        <div class="group g-security">
+          <div class="group-title"><i></i><em>SECURITY</em> המניה עצמה</div>
+          <div class="agents">
+            <button class="agent g-security" data-key="technical"><div class="tag">ENTRY / EXIT</div><b>Technical</b><span>מגמות, פריצות, Pullback, תמיכות, התנגדויות ותזמון.</span><span class="more">פרטים &larr;</span></button>
+            <button class="agent g-security" data-key="momentum"><div class="tag">CONTINUATION</div><b>Momentum</b><span>כוח מתמשך ו-Relative Strength מול השוק והסקטור.</span><span class="more">פרטים &larr;</span></button>
+            <button class="agent g-security" data-key="fundamental"><div class="tag">BUSINESS QUALITY</div><b>Fundamental</b><span>צמיחה, רווחיות, תזרים, חוב, ROIC ואיכות העסק.</span><span class="more">פרטים &larr;</span></button>
+            <button class="agent g-security" data-key="valuation"><div class="tag">PRICE VS VALUE</div><b>Valuation</b><span>האם המחיר מוצדק ביחס לאיכות, לצמיחה ולציפיות.</span><span class="more">פרטים &larr;</span></button>
+          </div>
+        </div>
 
-        <div class="agent" data-key="catalyst"><div class="tag">WHAT HAPPENED?</div><b>News & Catalysts</b><span>דוחות, Guidance, מוצרים, חוזים, FDA, רגולציה ואירועים מהותיים.</span><details class="agent-detail">
-          <summary>פתחו הסבר מפורט</summary>
-          <div class="agent-detail-body"><b>News &amp; Catalysts Agent</b><br><br>המטרה: לזהות מה קרה או עומד לקרות שיכול לשנות את התזה.<br><br>בודק Earnings, Guidance, מוצרים, חוזים, M&amp;A, FDA, רגולציה, תביעות, הנהלה ושותפויות.<br><br>מסווג Positive Catalyst, Negative Catalyst, Binary Event, Known Event, Potential Event ו-Noise.</div>
-        </details></div>
-        <div class="agent" data-key="devil"><div class="tag">CHALLENGE</div><b>Devil's Advocate</b><span>מנסה להפיל את התזה ולמצוא את הסיבה שבגללה לא כדאי לבצע את העסקה.</span><details class="agent-detail">
-          <summary>פתחו הסבר מפורט</summary>
-          <div class="agent-detail-body"><b>Devil&#x27;s Advocate Agent</b><br><br>המטרה: לנסות להפיל את התזה.<br><br>מחפש Hidden Risk, Accounting concerns, Debt, Extreme Valuation, Competition, Regulation, Hype, Crowded Trade, Binary Event וחולשה בטיעון המרכזי.<br><br>יכול להעלות Deal Breaker שמחייב דיון לפני Recommendation חיובית.</div>
-        </details></div>
-        <div class="agent" data-key="risk"><div class="tag">PORTFOLIO SAFETY</div><b>Risk</b><span>Volatility, Drawdown, קורלציה, ריכוזיות, Cash וחשיפה כוללת.</span><details class="agent-detail">
-          <summary>פתחו הסבר מפורט</summary>
-          <div class="agent-detail-body"><b>Risk Agent</b><br><br>המטרה: לבדוק לא רק אם ההשקעה טובה, אלא מה היא עושה לסיכון הכולל.<br><br>Security Risk: Volatility, Drawdown, Event/Gap Risk, Liquidity.<br><br>Portfolio Risk: Position/Sector/Theme/Factor concentration, Correlation, Cash ו-Overall Exposure.<br><br>מניה מצוינת יכולה לקבל WATCH או Position קטן אם היא מגדילה סיכון שכבר קיים בתיק.</div>
-        </details></div>
-        <div class="agent" data-key="alpha"><div class="tag">FREE AI</div><b>Alpha Agent</b><span>סוכן חופשי ללא שיטת השקעה מוכתבת — רק מטרה: למצוא Edge.</span><details class="agent-detail">
-          <summary>פתחו הסבר מפורט</summary>
-          <div class="agent-detail-body"><b>Alpha Agent — הסוכן החופשי</b><br><br>זהו Agent ללא פילוסופיית השקעה מוכתבת מראש.<br><br>המטרה היחידה שלו: למצוא Edge ביחס ל-Benchmark תוך עמידה במגבלות הסיכון.<br><br>הוא יכול לזהות Pattern חדש, לחלוק על Consensus, להציע Thesis לא קונבנציונלית או Candidate שהמערכת הרגילה פספסה.<br><br>הוא לא מקבל משקל יתר אוטומטי; הוא נמדד לאורך זמן כמו כולם.</div>
-        </details></div>
+        <div class="group g-challenge">
+          <div class="group-title"><i></i><em>CHALLENGE</em> מי שמנסה להפיל את ההחלטה, ומי שמתחרה בכולם</div>
+          <div class="agents">
+            <button class="agent g-challenge" data-key="catalyst"><div class="tag">WHAT HAPPENED?</div><b>News &amp; Catalysts</b><span>דוחות, Guidance, מוצרים, חוזים, FDA, רגולציה ואירועים מהותיים.</span><span class="more">פרטים &larr;</span></button>
+            <button class="agent g-challenge" data-key="devil"><div class="tag">CHALLENGE</div><b>Devil's Advocate</b><span>מנסה להפיל את התזה ולמצוא את הסיבה לא לבצע את העסקה.</span><span class="more">פרטים &larr;</span></button>
+            <button class="agent g-challenge" data-key="risk"><div class="tag">PORTFOLIO SAFETY</div><b>Risk</b><span>Volatility, Drawdown, קורלציה, ריכוזיות, Cash וחשיפה כוללת.</span><span class="more">פרטים &larr;</span></button>
+            <button class="agent g-free alpha" data-key="alpha"><div class="tag">FREE AI · CONTROL GROUP</div><b>Alpha Agent</b><span>סוכן חופשי בלי שיטה מוכתבת. אותם נתונים, אותן מגבלות, מטרה אחת: Edge.</span><span class="more">פרטים &larr;</span></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -356,8 +408,9 @@ Organizational Intelligence Agent הוא “מנהל הפיתוח הארגוני
 
 <section class="section" id="flow">
   <div class="wrap">
+    <div class="eyebrow">03 / PROCESS</div>
     <h2>איך מתקבלת החלטה?</h2>
-    <p class="section-intro">הסוכנים לא "הולכים לבדוק" בזמן הוועדה. הם מגיעים מוכנים. הוועדה עוסקת בהחלטה — לא באיסוף מידע.</p>
+    <p class="intro">הסוכנים לא "הולכים לבדוק" בזמן הוועדה. הם מגיעים מוכנים. הוועדה עוסקת בהחלטה, לא באיסוף מידע.</p>
     <div class="flow">
       <div class="step"><div class="n">01</div><strong>Real Market Data</strong><small>נתוני שוק, חדשות, חברה, תיק.</small></div>
       <div class="step"><div class="n">02</div><strong>Analysis Mode</strong><small>כל Agent מכין Position Paper.</small></div>
@@ -365,18 +418,10 @@ Organizational Intelligence Agent הוא “מנהל הפיתוח הארגוני
       <div class="step"><div class="n">04</div><strong>Investment Committee</strong><small>כל מומחה מציג עמדה תמציתית.</small></div>
       <div class="step"><div class="n">05</div><strong>Debate if Needed</strong><small>מחלוקת מהותית פותחת דיון ממוקד.</small></div>
       <div class="step"><div class="n">06</div><strong>Decision</strong><small>BUY / WATCH / HOLD / REDUCE / SELL.</small></div>
-      <div class="step"><div class="n">07</div><strong>Portfolio Action</strong><small>פעולה ב-Shadow או בעתיד בכסף אמיתי.</small></div>
+      <div class="step final"><div class="n">07</div><strong>Portfolio Action</strong><small>פעולה ב-Shadow, ובעתיד בכסף אמיתי.</small></div>
     </div>
-  </div>
-</section>
 
-<section class="section">
-  <div class="wrap">
-    <h2>הדינמיקה חשובה לא פחות מהציון</h2>
-    <p class="section-intro">המערכת לא רק שואלת מי צדק — היא לומדת איך הארגון חושב.</p><details class="agent-detail"><summary>איך הוויכוח נמדד?</summary><div class="agent-detail-body">
-הסוכנים מגיעים מוכנים. אם יש Consensus, ההחלטה מהירה. אם יש מחלוקת מהותית, נפתח Debate. המערכת מתעדת מי שינה דעה, איזה טיעון השפיע, מי צדק בדיעבד, והאם הדיון שיפר את ההחלטה. השפעה נרכשת דרך Evidence ו-Track Record — לא דרך רטוריקה.
-</div></details>
-    <div class="split">
+    <div class="split" style="margin-top:36px">
       <div class="card">
         <h3>מה נמדד אצל הסוכנים?</h3>
         <div class="metric"><span>Track Record</span><b>לאורך זמן</b></div>
@@ -385,101 +430,83 @@ Organizational Intelligence Agent הוא “מנהל הפיתוח הארגוני
         <div class="metric"><span>Regime Fit</span><b>מתי הוא חזק?</b></div>
       </div>
       <div class="card">
-        <h3>מה בודק Organizational Intelligence?</h3>
-        <p>האם נוצר Groupthink? מי שכנע בלי Evidence? מי זיהה סיכון שאחרים פספסו? מי חופף לסוכן אחר?</p>
-        <div class="note" style="margin-top:16px">
-          Influence נרכש באמצעות Evidence ו-Track Record — לא בגלל שסוכן "מדבר יפה".
-        </div>
+        <h3>הדינמיקה חשובה לא פחות מהציון</h3>
+        <p>האם נוצר Groupthink? מי שכנע בלי Evidence? מי זיהה סיכון שאחרים פספסו? מי חופף לסוכן אחר? המערכת לא רק שואלת מי צדק, היא לומדת איך הארגון חושב.</p>
+        <div class="note">Influence נרכש באמצעות Evidence ו-Track Record, לא בגלל שסוכן "מדבר יפה".</div>
+        <button class="link" onclick="openExplainer('debate')">איך הוויכוח נמדד? &larr;</button>
       </div>
     </div>
   </div>
 </section>
 
-
-<section class="section" id="proof">
+<section class="section dark" id="proof">
   <div class="wrap">
+    <div class="eyebrow">04 / THE TEST</div>
     <h2>המבחן האמיתי: האם כל המורכבות הזו מוסיפה ערך?</h2>
-    <p class="section-intro">המערכת לא מקבלת נקודות על תחכום. היא צריכה לנצח Baselines פשוטים וברורים.</p>
+    <p class="intro">המערכת לא מקבלת נקודות על תחכום. היא צריכה לנצח שלושה Baselines פשוטים וברורים.</p>
     <div class="grid3">
-      <div class="card">
-        <div class="pillar-num">1</div>
-        <h3>Benchmark</h3>
-        <p>האם לאורך זמן היא מייצרת תשואה עודפת — ובאופן אידיאלי גם תשואה מתואמת־סיכון טובה יותר — ממדד פסיבי רלוונטי?</p>
-      </div>
-      <div class="card">
-        <div class="pillar-num">2</div>
-        <h3>Single AI / Alpha</h3>
-        <p>האם הארגון כולו טוב יותר מ-Agent חופשי אחד שמקבל את אותה מטרה, אותם נתונים ואותן מגבלות סיכון?</p>
-      </div>
-      <div class="card">
-        <div class="pillar-num">3</div>
-        <h3>OEI</h3>
-        <p><b>Organizational Effectiveness Index</b> — האם איכות הדיון, הכיול, תרומת הסוכנים והלמידה הארגונית משתפרות לאורך זמן?</p>
-      </div>
+      <div class="step" style="min-height:0"><div class="n">BASELINE 1</div><strong>Benchmark</strong><small>האם לאורך זמן היא מייצרת תשואה עודפת, ובאופן אידיאלי גם תשואה מתואמת־סיכון טובה יותר, ממדד פסיבי רלוונטי?</small></div>
+      <div class="step" style="min-height:0"><div class="n">BASELINE 2</div><strong>Single AI / Alpha Agent</strong><small>האם הארגון כולו טוב יותר מ-Agent חופשי אחד שמקבל את אותה מטרה, אותם נתונים ואותן מגבלות סיכון?</small></div>
+      <div class="step" style="min-height:0"><div class="n">BASELINE 3</div><strong>OEI</strong><small>Organizational Effectiveness Index: האם איכות הדיון, הכיול, תרומת הסוכנים והלמידה הארגונית משתפרות לאורך זמן?</small></div>
     </div>
   </div>
 </section>
 
 <section class="section" id="shadow">
   <div class="wrap">
-    <h2>Shadow Portfolio — המערכת צריכה להרוויח את האמון</h2>
-    <p class="section-intro">לפני כסף אמיתי, כל החלטה נבחנת מול נתוני שוק אמיתיים ובתיק וירטואלי חי.</p><details class="agent-detail"><summary>איך נבנה האמון?</summary><div class="agent-detail-body">
-המערכת מנהלת Shadow Portfolio על נתוני שוק אמיתיים. כל BUY/SELL מתבצע וירטואלית בזמן אמת. לאורך זמן נמדדים Return, Drawdown, Benchmark, Missed Opportunities, Avoided Losses, Calibration, Agent Performance ו-Champion vs Challenger. רק לאחר Track Record יציב עוברים בהדרגה לשימוש אמיתי.
-</div></details>
+    <div class="eyebrow">05 / TRUST</div>
+    <h2>Shadow Portfolio: המערכת צריכה להרוויח את האמון</h2>
+    <p class="intro">לפני כסף אמיתי, כל החלטה נבחנת מול נתוני שוק אמיתיים ובתיק וירטואלי חי.</p>
     <div class="dashboard">
       <div class="panel">
-        <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
-          <div>
-            <small style="color:var(--muted)">Shadow Portfolio</small>
-            <div style="font-size:34px;font-weight:850;margin-top:4px">₪317,420</div>
-          </div>
+        <h4>Shadow Portfolio <small>מאז 01.03.2026</small></h4>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px">
+          <div class="big">₪317,420<small>$85,790</small></div>
           <span class="status"><i class="dot"></i>PROMISING</span>
         </div>
-        <div class="metric"><span>Return</span><b>+5.8%</b></div>
-        <div class="metric"><span>Benchmark</span><b>+4.1%</b></div>
-        <div class="metric"><span>Max Drawdown</span><b>-6.7%</b></div>
-        <div class="metric"><span>Cash</span><b>18%</b></div>
+        <svg class="spark" viewBox="0 0 400 64" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="g1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#4338ca" stop-opacity=".25"/><stop offset="1" stop-color="#4338ca" stop-opacity="0"/></linearGradient></defs>
+          <path d="M0 48 L30 44 L60 46 L90 38 L120 40 L150 30 L180 34 L210 26 L240 28 L270 20 L300 24 L330 16 L360 18 L400 10 L400 64 L0 64 Z" fill="url(#g1)"/>
+          <path d="M0 48 L30 44 L60 46 L90 38 L120 40 L150 30 L180 34 L210 26 L240 28 L270 20 L300 24 L330 16 L360 18 L400 10" fill="none" stroke="#4338ca" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M0 50 L60 49 L120 45 L180 42 L240 38 L300 34 L360 30 L400 27" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4"/>
+        </svg>
+        <div class="metric"><span>Return</span><b class="pos num">+5.8%</b></div>
+        <div class="metric"><span>Benchmark (S&amp;P 500)</span><b class="num">+4.1%</b></div>
+        <div class="metric"><span>Max Drawdown</span><b class="neg num">-6.7%</b></div>
+        <div class="metric"><span>Cash</span><b class="num">18%</b></div>
       </div>
       <div class="panel">
         <h4>Trust / Readiness</h4>
         <div class="progress"><i></i></div>
-        <p style="color:var(--muted);margin:10px 0 18px">המערכת עדיין בונה Track Record. ה-Calibration משתפר, אך טרם עברה לשלב Limited Adoption.</p>
+        <div class="progress-labels"><span>CALIBRATING</span><span>PROMISING</span><span>STABLE</span><span>VALIDATED</span></div>
+        <p style="color:var(--muted);margin:14px 0 14px;font-size:14px">המערכת עדיין בונה Track Record. ה-Calibration משתפר, אך טרם עברה לשלב Limited Adoption.</p>
         <div class="metric"><span>Shadow Duration</span><b>4 חודשים</b></div>
-        <div class="metric"><span>Decisions Observed</span><b>64</b></div>
-        <div class="metric"><span>Confidence Calibration</span><b>Improving</b></div>
+        <div class="metric"><span>Decisions Observed</span><b class="num">64</b></div>
+        <div class="metric"><span>Confidence Calibration</span><b style="color:var(--green)">Improving</b></div>
+        <div class="metric"><span>Regimes Observed</span><b class="num">1 / 2</b></div>
+        <button class="link" onclick="openExplainer('shadow')">איך נבנה האמון? &larr;</button>
       </div>
     </div>
   </div>
 </section>
 
-
-<section class="section" id="calibration">
+<section class="section alt" id="calibration">
   <div class="wrap">
-    <h2>Calibration Engine — לצבור שנות ניסיון בלי לחכות שנים</h2>
-    <p class="section-intro">
-      הארגון יכול "לחיות מחדש" תקופות היסטוריות יום אחרי יום. בכל נקודת זמן הוא אמור לראות רק את המידע שהיה זמין אז,
-      לקבל החלטה, ורק לאחר מכן להתקדם בזמן.
-    </p>
+    <div class="eyebrow">06 / CALIBRATION</div>
+    <h2>Calibration Engine: לצבור שנות ניסיון בלי לחכות שנים</h2>
+    <p class="intro">הארגון יכול "לחיות מחדש" תקופות היסטוריות יום אחרי יום. בכל נקודת זמן הוא רואה רק את המידע שהיה זמין אז, מקבל החלטה, ורק אחר כך מתקדם בזמן.</p>
     <div class="split">
       <div class="card">
-        <h3>Historical Replay</h3>
-        <p>המערכת מכיילת לא רק Strategy אלא גם כל Agent, איכות Debate, משקלי השפעה ומבנה ארגוני. כך ניתן לבצע למידה מואצת על Bull, Bear, משברים ושינויי Regime.</p>
-        <details class="agent-detail">
-          <summary>איך מונעים מהסוכנים "לרמות"?</summary>
-          <div class="agent-detail-body">
-            Integrity & Validation הוא חלק ממנוע הכיול. הוא אוכף Point-in-Time Data, מונע Look-Ahead Bias ו-Data Leakage,
-            בודק מתי מידע באמת פורסם ושומר שהחלטה היסטורית תתבסס רק על מה שהיה ניתן לדעת באותו רגע.
-            חשוב: גם עם מנגנון כזה, Backtest אינו הוכחה. Foundation models עלולים להכיל ידע היסטורי מהאימון שלהם,
-            ולכן האימות המכריע נשאר Forward / Shadow testing.
-          </div>
-        </details>
+        <div class="pill-num">HISTORICAL REPLAY</div>
+        <h3>לכייל את הארגון, לא רק את האסטרטגיה</h3>
+        <p>המערכת מכיילת כל Agent, את איכות ה-Debate, את משקלי ההשפעה ואת המבנה הארגוני. כך אפשר ללמוד בצורה מואצת על Bull, Bear, משברים ושינויי Regime.</p>
+        <div class="note"><b>איך מונעים מהסוכנים "לרמות"?</b> Integrity &amp; Validation אוכף Point-in-Time Data, מונע Look-Ahead Bias ו-Data Leakage ובודק מתי מידע באמת פורסם. ועדיין: Foundation Models עלולים להכיל ידע היסטורי מהאימון שלהם, ולכן Backtest אינו הוכחה. האימות המכריע נשאר Forward / Shadow.</div>
       </div>
       <div class="card">
-        <h3>Learn → Validate Forward</h3>
-        <p>העבר משמש לאימון וכיול. העתיד משמש להוכחה. שיפור שמופיע רק ב-Replay אך נעלם ב-Shadow Portfolio הוא חשוד כ-Overfitting.</p>
-        <div class="note" style="margin-top:16px">
-          המטרה אינה למצוא Strategy מושלמת על העבר — אלא לפתח ארגון שמסוגל להסתגל גם לתקופה שהוא עדיין לא ראה.
-        </div>
+        <div class="pill-num">LEARN &rarr; VALIDATE FORWARD</div>
+        <h3>העבר מאמן, העתיד מוכיח</h3>
+        <p>שיפור שמופיע רק ב-Replay אבל נעלם ב-Shadow Portfolio הוא חשוד כ-Overfitting. שינוי משמעותי בלוגיקה רץ קודם כ-Challenger מול ה-Champion על אותם נתונים חיים.</p>
+        <div class="note">המטרה אינה למצוא Strategy מושלמת על העבר, אלא לפתח ארגון שמסוגל להסתגל גם לתקופה שהוא עדיין לא ראה.</div>
       </div>
     </div>
   </div>
@@ -487,161 +514,139 @@ Organizational Intelligence Agent הוא “מנהל הפיתוח הארגוני
 
 <section class="section" id="readiness">
   <div class="wrap">
+    <div class="eyebrow">07 / READINESS</div>
     <h2>המערכת צריכה להרוויח את הזכות לנהל הון</h2>
-    <p class="section-intro">Readiness הוא Gate דינמי, לא תעודת הצטיינות חד־פעמית.</p>
-    <div class="flow" style="grid-template-columns:repeat(4,1fr)">
-      <div class="step"><div class="n">01</div><strong>Research</strong><small>ניתוח, Replay וכיול בלבד.</small></div>
-      <div class="step"><div class="n">02</div><strong>Shadow</strong><small>החלטות חיות על כסף וירטואלי.</small></div>
-      <div class="step"><div class="n">03</div><strong>Limited Capital</strong><small>הון אמיתי מוגבל לאחר עמידה בתנאי מוכנות.</small></div>
-      <div class="step"><div class="n">04</div><strong>Scale Up / Down</strong><small>המנדט גדל או קטן בהתאם לביצועים ולסיכון.</small></div>
+    <p class="intro">Readiness הוא Gate דינמי, לא תעודת הצטיינות חד־פעמית. המנדט יכול לגדול, ויכול גם לקטון.</p>
+    <div class="stepper">
+      <div class="step"><div class="n">PHASE 1</div><strong>Research</strong><small>ניתוח, Replay וכיול בלבד.</small></div>
+      <div class="step"><div class="n">PHASE 2</div><strong>Shadow</strong><small>החלטות חיות על כסף וירטואלי.</small></div>
+      <div class="step"><div class="n">PHASE 3</div><strong>Limited Capital</strong><small>הון אמיתי מוגבל לאחר עמידה בתנאי מוכנות.</small></div>
+      <div class="step final"><div class="n">PHASE 4</div><strong>Scale Up / Down</strong><small>המנדט גדל או קטן בהתאם לביצועים ולסיכון.</small></div>
     </div>
-    <details class="agent-detail" style="margin-top:16px">
-      <summary>ממה מורכב Readiness Score?</summary>
-      <div class="agent-detail-body">
-        ביצועים מול Benchmark, ביצועים מול Single-Agent baseline, Drawdown, Risk-adjusted return, יציבות בין Regimes,
-        Calibration של Confidence, איכות נתונים, מספר החלטות, משך Forward validation, Robustness ו-OEI.
-        אין מדד יחיד שמאפשר למערכת "לעבור".
-      </div>
-    </details>
+    <div class="note" style="margin-top:18px"><b>ממה מורכב Readiness Score?</b> ביצועים מול Benchmark, ביצועים מול Single-Agent baseline, Drawdown, Risk-adjusted return, יציבות בין Regimes, Calibration של Confidence, איכות נתונים, מספר החלטות, משך Forward validation, Robustness ו-OEI. אין מדד יחיד שמאפשר למערכת "לעבור".</div>
   </div>
 </section>
 
-<section class="section" id="ux">
+<section class="section alt" id="ux">
   <div class="wrap">
+    <div class="eyebrow">08 / INTERFACE</div>
     <h2>הממשק: Dashboard + חדר ועדה</h2>
-    <p class="section-intro">לא הכל Chat ולא הכל Dashboard. המשתמש מקבל תמונת מצב ברורה, ויכול לצלול לשיחה רק כשצריך.</p>
+    <p class="intro">לא הכל Chat ולא הכל Dashboard. המשתמש מקבל תמונת מצב ברורה, ויכול לצלול לשיחה רק כשצריך.</p>
 
     <div class="dashboard" style="margin-bottom:18px">
       <div class="panel">
-        <h4>Today's Actions</h4>
-        <div class="action"><div><b>GOOG</b><div style="color:var(--muted);font-size:13px">Breakout + Momentum improving</div></div><span class="badge buy">BUY 3%</span></div>
-        <div class="action"><div><b>NVDA</b><div style="color:var(--muted);font-size:13px">Position became oversized</div></div><span class="badge sell">REDUCE</span></div>
-        <div class="action"><div><b>AMZN</b><div style="color:var(--muted);font-size:13px">Waiting for earnings confirmation</div></div><span class="badge watch">WATCH</span></div>
+        <h4>Today's Actions <small>3 פעולות · <span class="mono">RISK ON</span></small></h4>
+        <div class="action"><div><b>GOOG</b><div class="why">Breakout + Momentum improving</div></div><span class="badge buy">BUY 3%</span></div>
+        <div class="action"><div><b>NVDA</b><div class="why">Position became oversized</div></div><span class="badge sell">REDUCE</span></div>
+        <div class="action"><div><b>AMZN</b><div class="why">Waiting for earnings confirmation</div></div><span class="badge watch">WATCH</span></div>
       </div>
       <div class="panel">
         <h4>What Changed?</h4>
-        <p><b>GOOG</b> — Score 69 → 82</p>
-        <p style="color:var(--muted)">Technical setup השתפר, Momentum מתחזק, Sentiment עדיין Neutral.</p>
-        <button class="btn btn-secondary" onclick="document.getElementById('committee').scrollIntoView()">Enter Investment Committee</button>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+          <b class="mono" style="font-size:16px">GOOG</b>
+          <span class="delta">Score <span class="from">69</span> &rarr; <span class="to">82</span></span>
+        </div>
+        <p style="color:var(--muted);font-size:14px;margin:10px 0 16px">Technical setup השתפר, Momentum מתחזק, Sentiment עדיין Neutral.</p>
+        <button class="btn btn-secondary" onclick="document.getElementById('committee').scrollIntoView({behavior:'smooth'})">היכנסו לחדר הוועדה &larr;</button>
       </div>
     </div>
 
     <div class="committee" id="committee">
       <div class="panel">
-        <h4>Investment Committee — GOOG</h4>
+        <h4>Investment Committee <small class="mono">GOOG · 07.09.2026</small></h4>
         <div class="thread">
-          <div class="msg"><b>Technical</b><p>הפריצה מאושרת. איכות הכניסה גבוהה.</p></div>
-          <div class="msg"><b>Fundamental</b><p>איכות העסק גבוהה ומגמת הצמיחה משתפרת.</p></div>
-          <div class="msg"><b>Valuation</b><p>המניה אינה זולה. נדרש המשך ביצוע חזק כדי להצדיק את המחיר.</p></div>
-          <div class="msg"><b>Devil's Advocate</b><p>הסיכון המרכזי: דוחות בעוד 8 ימים.</p></div>
-          <div class="msg highlight"><b>Alpha Agent</b><p>מסכים עם BUY, אבל התזה שלי נשענת על שיפור במוניטיזציה של AI ולא על ה-Setup הטכני.</p></div>
+          <div class="msg"><span class="av">TA</span><div><b>Technical</b><p>הפריצה מאושרת. איכות הכניסה גבוהה.</p></div></div>
+          <div class="msg"><span class="av f">FA</span><div><b>Fundamental</b><p>איכות העסק גבוהה ומגמת הצמיחה משתפרת.</p></div></div>
+          <div class="msg"><span class="av t">VA</span><div><b>Valuation</b><p>המניה אינה זולה. נדרש המשך ביצוע חזק כדי להצדיק את המחיר.</p></div></div>
+          <div class="msg"><span class="av r">DA</span><div><b>Devil's Advocate</b><p>הסיכון המרכזי: דוחות בעוד 8 ימים.</p></div></div>
+          <div class="msg highlight"><span class="av a">α</span><div><b>Alpha Agent</b><p>מסכים עם BUY, אבל התזה שלי נשענת על שיפור במוניטיזציה של AI ולא על ה-Setup הטכני.</p></div></div>
         </div>
       </div>
 
       <div class="decision">
         <small>COMMITTEE DECISION</small>
-        <h3>BUY GOOG — 3%</h3>
+        <h3>BUY GOOG <span class="num" style="color:#a5b4fc;font-size:22px">3%</span></h3>
         <div class="chips">
-          <span class="chip">Score 82</span>
-          <span class="chip">Confidence 78</span>
-          <span class="chip">Urgency MEDIUM</span>
-          <span class="chip">Risk MEDIUM</span>
+          <span class="chip">Score <span class="num">82</span></span>
+          <span class="chip">Confidence <span class="num">78</span></span>
+          <span class="chip">Urgency <span class="num">MEDIUM</span></span>
+          <span class="chip">Risk <span class="num">MEDIUM</span></span>
         </div>
-        <p style="margin-top:18px;color:#d5d9e0">החלטה חיובית, אך גודל הפוזיציה מוגבל בגלל Event Risk לפני דוחות.</p>
-        <a class="btn btn-secondary" style="margin-top:8px;display:inline-block" href="#participant-mode">אני רוצה להשתתף בדיון</a>
+        <p>החלטה חיובית, אך גודל הפוזיציה מוגבל בגלל Event Risk לפני דוחות. Stop ראשוני ותנאי ביטול התזה נרשמו ב-Journal.</p>
+        <button class="btn btn-secondary" style="margin-top:16px;align-self:flex-start" onclick="openExplainer('participant')">אני רוצה להשתתף בדיון</button>
       </div>
     </div>
   </div>
 </section>
 
-
-<section class="section" id="participant-mode">
+<section class="section" id="evolution">
   <div class="wrap">
-    <h2>Participant Mode</h2>
-    <p class="section-intro">המשתמש יכול להפוך לחבר ועדה פעיל בלי להיות חייב לנהל את כל התהליך.</p>
-    <div class="card">
-      <h3>מה אפשר לעשות?</h3>
-      <p>לשאול את Technical "למה עכשיו?", לבקש מה-Devil's Advocate להקשות יותר, לשאול את Risk מה יקרה אם נגדיל פוזיציה, או להעלות טענה חדשה ולבקש מהוועדה להתמודד איתה.</p>
-      <div class="note" style="margin-top:16px">החוויה נשארת מהירה: כל חומרי המחקר כבר הוכנו מראש לפני כניסת המשתמש לוועדה.</div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
+    <div class="eyebrow">09 / EVOLUTION</div>
     <h2>Strategy Evolution + Organization Evolution</h2>
-    <p class="section-intro">לא רק האסטרטגיה משתפרת. גם "הארגון" עצמו מתבגר לאורך זמן.</p>
+    <p class="intro">לא רק האסטרטגיה משתפרת. גם "הארגון" עצמו מתבגר לאורך זמן.</p>
     <div class="timeline">
       <div class="version"><div class="v">V1</div><h3>Baseline</h3><p>High disagreement<br/>Confidence poorly calibrated</p></div>
       <div class="version"><div class="v">V2</div><h3>Roles refined</h3><p>Technical / Momentum separated<br/>Better Risk discipline</p></div>
-      <div class="version current"><div class="v">V3 — Current</div><h3>Committee learning</h3><p>Minority opinion preserved<br/>Lower overconfidence</p></div>
-      <div class="version"><div class="v">Challenger</div><h3>Under validation</h3><p>Alpha contribution increased<br/>Awaiting enough observations</p></div>
+      <div class="version current"><div class="v">V3 · CURRENT</div><h3>Committee learning</h3><p>Minority opinion preserved<br/>Lower overconfidence</p></div>
+      <div class="version next"><div class="v">CHALLENGER</div><h3>Under validation</h3><p>Alpha contribution increased<br/>Awaiting enough observations</p></div>
     </div>
   </div>
 </section>
 
+<section class="section dark" id="model-agnostic">
+  <div class="wrap">
+    <div class="eyebrow">10 / ARCHITECTURE</div>
+    <h2>אנחנו לא בונים LLM. אנחנו בונים את הארגון שמעליו.</h2>
+    <p class="intro">ה-LLM הוא המנוע, והוא ניתן להחלפה. הנכס הוא מערכת התפקידים, הוועדה, הזיכרון, תהליך ההחלטה, ה-Track Record, מנגנוני הכיול והידע שהארגון צובר על עצמו.</p>
+    <div class="layers">
+      <div class="layer top"><span class="n">LAYER 3</span><div><strong>Synthetic Investment House</strong><small>ועדה, Governance, Portfolio, Risk, Calibration ולמידה ארגונית.</small></div></div>
+      <div class="layer"><span class="n">LAYER 2</span><div><strong>Agents</strong><small>תפקיד, מומחיות, זיכרון, Evidence ו-Track Record.</small></div></div>
+      <div class="layer"><span class="n">LAYER 1</span><div><strong>Models</strong><small>Open / closed models. אפשר להחליף מנוע עם הזמן.</small></div></div>
+    </div>
+  </div>
+</section>
 
 <section class="section" id="why-now">
   <div class="wrap">
+    <div class="eyebrow">11 / WHY NOW</div>
     <h2>למה דווקא עכשיו?</h2>
     <div class="grid3">
-      <div class="card"><h3>מודלים חזקים יותר</h3><p>LLMs כבר מסוגלים לעבוד עם טקסט, נתונים, כלים והקשר ברמה שמאפשרת חלוקת עבודה אמיתית בין מומחים.</p></div>
-      <div class="card"><h3>Agentic AI</h3><p>אפשר לבנות תהליכים שבהם Agents חוקרים, מבקרים, מעבירים Evidence ומגיעים להחלטה משותפת במקום Prompt חד־פעמי.</p></div>
-      <div class="card"><h3>יכולת מדידה</h3><p>אפשר להשוות ארכיטקטורות, לבצע Replay מבוקר ולהפעיל Forward Shadow Portfolio כדי לבדוק האם הארגון באמת מוסיף Edge.</p></div>
+      <div class="card"><div class="pill-num">01</div><h3>מודלים חזקים יותר</h3><p>LLMs כבר מסוגלים לעבוד עם טקסט, נתונים, כלים והקשר ברמה שמאפשרת חלוקת עבודה אמיתית בין מומחים.</p></div>
+      <div class="card"><div class="pill-num">02</div><h3>Agentic AI</h3><p>אפשר לבנות תהליכים שבהם Agents חוקרים, מבקרים, מעבירים Evidence ומגיעים להחלטה משותפת במקום Prompt חד־פעמי.</p></div>
+      <div class="card"><div class="pill-num">03</div><h3>יכולת מדידה</h3><p>אפשר להשוות ארכיטקטורות, לבצע Replay מבוקר ולהפעיל Forward Shadow Portfolio כדי לבדוק האם הארגון באמת מוסיף Edge.</p></div>
     </div>
-  </div>
-</section>
 
-<section class="section" id="model-agnostic">
-  <div class="wrap">
-    <h2>אנחנו לא בונים LLM. אנחנו בונים את הארגון שמעליו.</h2>
-    <p class="section-intro">
-      ה-LLM הוא המנוע — והוא ניתן להחלפה. הנכס הוא מערכת התפקידים, הוועדה, הזיכרון, תהליך ההחלטה,
-      ה-Track Record, מנגנוני הכיול והידע שהארגון צובר על עצמו.
-    </p>
-    <div class="org">
-      <div class="flow" style="grid-template-columns:repeat(3,1fr)">
-        <div class="step"><div class="n">LAYER 1</div><strong>Models</strong><small>Open / closed models. אפשר להחליף מנוע עם הזמן.</small></div>
-        <div class="step"><div class="n">LAYER 2</div><strong>Agents</strong><small>תפקיד, מומחיות, זיכרון, Evidence ו-Track Record.</small></div>
-        <div class="step"><div class="n">LAYER 3</div><strong>Synthetic Investment House</strong><small>ועדה, Governance, Portfolio, Risk, Calibration ולמידה ארגונית.</small></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="moat">
-  <div class="wrap">
-    <h2>הרעיון פשוט להסביר. הביצוע הוא החלק הקשה.</h2>
-    <p class="section-intro">וזה בדיוק המקום שבו עשוי להיווצר הבידול.</p>
-    <div class="split">
+    <div class="split" style="margin-top:18px">
       <div class="card">
         <h3>מה צריך לפצח?</h3>
-        <p>נתוני Point-in-Time אמינים, מניעת Leakage, תזמור Agents, Portfolio & Risk logic, Attribution,
-        Debate שאינו הופך ל-Groupthink, כיול בלי Overfitting ויכולת להפריד בין החלטה טובה לבין תוצאה מקרית.</p>
+        <p>נתוני Point-in-Time אמינים, מניעת Leakage, תזמור Agents, Portfolio &amp; Risk logic, Attribution, Debate שאינו הופך ל-Groupthink, כיול בלי Overfitting, ויכולת להפריד בין החלטה טובה לבין תוצאה מקרית.</p>
       </div>
       <div class="card">
         <h3>מה יכול להפוך ל-Moat?</h3>
-        <p>לא Prompt סודי. אלא ניסיון מצטבר: Decision Journal, Agent track records, Strategy versions,
-        Organizational memory, נתוני כיול והיכולת לדעת איזה מבנה ארגוני עובד באיזה Market Regime.</p>
+        <p>לא Prompt סודי, אלא ניסיון מצטבר: Decision Journal, Agent track records, Strategy versions, Organizational memory, נתוני כיול והיכולת לדעת איזה מבנה ארגוני עובד באיזה Market Regime.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="evidence">
+<section class="section alt" id="evidence">
   <div class="wrap">
+    <div class="eyebrow">12 / EVIDENCE</div>
     <h2>מה המחקר כבר מרמז?</h2>
-    <p class="section-intro">יש סימנים מעודדים — וגם סיבה טובה להיות סקפטיים. זו תזה שצריך להוכיח, לא הנחה.</p>
+    <p class="intro">יש סימנים מעודדים, וגם סיבה טובה להיות סקפטיים. זו תזה שצריך להוכיח, לא הנחה.</p>
     <div class="grid3">
       <div class="card">
-        <h3>Specialization יכולה לעזור</h3>
+        <div class="pill-num">SPECIALIZATION</div>
+        <h3>התמחות יכולה לעזור</h3>
         <p>מחקר מ-2026 על Expert Investment Teams מצא שפירוק משימות פיננסיות לתפקידים עדינים שיפר תשואה מתואמת־סיכון לעומת מבנים גסים יותר, תחת Backtest מבוקר Leakage.</p>
       </div>
       <div class="card">
+        <div class="pill-num">DEBATE</div>
         <h3>Debate אינו קסם</h3>
         <p>מחקר Macro multi-agent מ-2026 מצא ש-Debate Agent לא ניצח את ה-Agent היחיד הטוב ביותר; התרומה שלו הייתה בעיקר תיקון Bias. כלומר, צריך למדוד את ערך התיאום עצמו.</p>
       </div>
       <div class="card">
+        <div class="pill-num">BACKTESTS</div>
         <h3>Backtests עלולים להטעות</h3>
         <p>מחקר ארוך-טווח מ-2025 מצא שיתרונות של אסטרטגיות LLM נחלשו מאוד כאשר הרחיבו את התקופה והיקום. מחקר CEPR מ-2026 מדגיש שגם ידע האימון של המודל עצמו יוצר Look-Ahead challenge.</p>
       </div>
@@ -649,7 +654,7 @@ Organizational Intelligence Agent הוא “מנהל הפיתוח הארגוני
     <div class="note" style="margin-top:18px">
       <b>השאלה שאנחנו יוצאים להוכיח:</b>
       האם ארגון AI מתמחה, מתווכח, מודד ומפתח את עצמו מסוגל לייצר יתרון עקבי על פני Benchmark
-      ועל פני Agent יחיד חזק — אחרי עלויות, לאורך Regimes שונים ובבדיקה קדימה בזמן?
+      ועל פני Agent יחיד חזק, אחרי עלויות, לאורך Regimes שונים ובבדיקה קדימה בזמן?
     </div>
   </div>
 </section>
@@ -662,231 +667,123 @@ Organizational Intelligence Agent הוא “מנהל הפיתוח הארגוני
 </footer>
 
 <div class="modal" id="modal" onclick="if(event.target===this) closeModal()">
-  <div class="modal-box">
-    <button class="close" onclick="closeModal()">×</button>
+  <div class="modal-box" role="dialog" aria-modal="true">
+    <button class="close" onclick="closeModal()" aria-label="סגור">×</button>
     <div id="modal-content"></div>
   </div>
 </div>
 
 <script>
 const details = {
-macro:{
- title:"Macro & Geopolitical Agent",
- body:`<p><b>המטרה:</b> להבין אילו כוחות חיצוניים יכולים לשנות את סביבת ההשקעה — גם כאשר שום דבר בחברה עצמה עדיין לא השתנה.</p>
- <p><b>מה הוא בודק?</b></p>
- <ul>
-   <li>ריבית, אינפלציה ומדיניות בנקים מרכזיים.</li>
-   <li>מיתון, צמיחה, אבטלה ומחזור כלכלי.</li>
-   <li>בחירות, שינויי ממשל, מכסים וסכסוכי סחר.</li>
-   <li>מלחמות, סנקציות, משברים גיאופוליטיים ומגפות.</li>
-   <li>מטבעות, סחורות ושינויים חדים בתנאי מימון.</li>
- </ul>
+macro:{tag:"CONTEXT · GLOBAL", title:"Macro & Geopolitical Agent",
+ body:`<p><b>המטרה:</b> להבין אילו כוחות חיצוניים יכולים לשנות את סביבת ההשקעה, גם כאשר שום דבר בחברה עצמה עדיין לא השתנה.</p>
+ <h4>מה הוא בודק?</h4>
+ <ul><li>ריבית, אינפלציה ומדיניות בנקים מרכזיים.</li><li>מיתון, צמיחה, אבטלה ומחזור כלכלי.</li><li>בחירות, שינויי ממשל, מכסים וסכסוכי סחר.</li><li>מלחמות, סנקציות, משברים גיאופוליטיים ומגפות.</li><li>מטבעות, סחורות ושינויים חדים בתנאי מימון.</li></ul>
  <p><b>איך הוא תורם לוועדה?</b> הוא מתרגם אירוע גלובלי לשאלות השקעתיות: מי נפגע? מי מרוויח? איזה סקטור חשוף? האם צריך להקטין סיכון?</p>
  <div class="note"><b>דוגמה:</b> עלייה חדה במכסים על שבבים לא מובילה אוטומטית ל-SELL. הסוכן בודק אילו חברות תלויות בשרשרת אספקה מסוימת, מי יכולה לגלגל עלויות, ואילו שווקים נהנים מהסטת ביקוש.</div>`},
-regime:{
- title:"Market Regime Agent",
+regime:{tag:"CONTEXT · MARKET STATE", title:"Market Regime Agent",
  body:`<p><b>המטרה:</b> להבין באיזה "מצב שוק" אנחנו נמצאים לפני שמנתחים מניה בודדת.</p>
- <p>הוא מסווג את הסביבה למשל ל-Bull, Neutral או Risk Off, ומוסיף Flags כמו High Volatility, Extreme Fear או Liquidity Stress.</p>
+ <p>הוא מסווג את הסביבה ל-Bull, Neutral או Risk Off, ומוסיף Flags כמו High Volatility, Extreme Fear או Liquidity Stress.</p>
  <p><b>למה זה חשוב?</b> אותו Setup בדיוק יכול להיות אטרקטיבי בשוק שורי ומסוכן בשוק Risk Off.</p>
- <ul>
-   <li>משפיע על רף BUY.</li>
-   <li>משפיע על Position Size.</li>
-   <li>משפיע על Cash הרצוי.</li>
-   <li>משפיע על המשקל היחסי של Momentum, Risk, Valuation וכו'.</li>
- </ul>
+ <ul><li>משפיע על רף BUY.</li><li>משפיע על Position Size.</li><li>משפיע על Cash הרצוי.</li><li>משפיע על המשקל היחסי של Momentum, Risk, Valuation וכו'.</li></ul>
  <div class="note">הסוכן לא אומר "איזו מניה לקנות"; הוא קובע את תנאי המשחק שבהם כל השאר עובדים.</div>`},
-sector:{
- title:"Sector Rotation Agent",
+sector:{tag:"CONTEXT · CAPITAL FLOWS", title:"Sector Rotation Agent",
  body:`<p><b>המטרה:</b> לזהות לאן זורם הכסף בין סקטורים ותמות.</p>
- <p>הוא מחפש Leadership משתנה: למשל מעבר מטכנולוגיה לפיננסים, מ-Growth ל-Value, או מסקטורים מחזוריים לדפנסיביים.</p>
+ <p>הוא מחפש Leadership משתנה: מעבר מטכנולוגיה לפיננסים, מ-Growth ל-Value, או מסקטורים מחזוריים לדפנסיביים.</p>
  <p><b>למה זה חשוב?</b> חברה מצוינת יכולה להיתקל ברוח נגדית חזקה אם הסקטור כולו נחלש; מנגד, חברה בינונית יכולה ליהנות מגל סקטוריאלי.</p>
- <ul>
-   <li>חוזק יחסי של הסקטור מול השוק.</li>
-   <li>שינויי מומנטום סקטוריאליים.</li>
-   <li>Theme concentration בתיק.</li>
-   <li>האם הזדמנות היא Company-specific או Sector-wide.</li>
- </ul>`},
-technical:{
- title:"Technical Agent",
- body:`<p><b>השאלה:</b> האם המבנה הטכני מתאים לכניסה, המתנה או יציאה <u>עכשיו</u>?</p>
- <p><b>Focus:</b> Timing ו-Setup Quality.</p>
- <ul>
-   <li>מגמה קצרה, בינונית וארוכה.</li>
-   <li>Moving Averages, תמיכות והתנגדויות.</li>
-   <li>Breakout, Pullback, Consolidation.</li>
-   <li>Volume, Volatility ומבנה המחיר.</li>
-   <li>Technical invalidation — מה יגרום לנו להודות שה-Setup נשבר.</li>
- </ul>
- <p><b>ההבדל ממומנטום:</b> Technical שואל "האם זה זמן טוב לפעול?", Momentum שואל "האם קיים כוח מתמשך?".</p>
- <div class="note"><b>דוגמה:</b> מניה יכולה להיות עם Momentum חזק, אבל אחרי ריצה חדה היא Extended מדי ולכן Technical ימליץ WAIT.</div>`},
-momentum:{
- title:"Momentum Agent",
- body:`<p><b>השאלה:</b> האם למניה יש כוח מתמשך והאם היא ממשיכה להציג ביצועי יתר?</p>
- <p><b>Focus:</b> Continuation / Relative Strength.</p>
- <ul>
-   <li>ביצועים ב-1, 3, 6 ו-12 חודשים.</li>
-   <li>Relative Strength מול S&P / Nasdaq.</li>
-   <li>Relative Strength מול הסקטור.</li>
-   <li>Acceleration / Deceleration.</li>
-   <li>Earnings Momentum ו-Estimate Revisions.</li>
-   <li>האם Volume תומך בתנועה.</li>
- </ul>
- <p>הוא מנסה להבדיל בין Healthy Momentum לבין Overheated / Crowded Trade.</p>
- <div class="note"><b>דוגמה:</b> Technical יכול להגיד "Breakout מוצלח", אבל Momentum יבדוק האם זו פריצה בתוך מגמה חזקה או תנועה מקרית בלי המשכיות.</div>`},
-fundamental:{
- title:"Fundamental Agent",
- body:`<p><b>השאלה:</b> האם העסק עצמו איכותי, בריא ומשתפר?</p>
- <ul>
-   <li>Revenue ו-Revenue Growth.</li>
-   <li>EPS ו-Earnings Growth.</li>
-   <li>Margins ו-Free Cash Flow.</li>
-   <li>Debt, Balance Sheet, ROIC.</li>
-   <li>Guidance, יציבות עסקית ואיכות הנהלה.</li>
-   <li>Competitive position ויכולת לשמור על יתרון.</li>
- </ul>
- <p>הוא לא מסתפק בצילום מצב, אלא מסווג את העסק כ-Improving / Stable / Deteriorating.</p>
- <div class="note"><b>חשוב:</b> Fundamental Analysis אינו זהה ל-Value Investing. אפשר למצוא חברה מעולה אבל יקרה מאוד — ולכן קיים Valuation Agent נפרד.</div>`},
-valuation:{
- title:"Valuation Agent",
- body:`<p><b>השאלה:</b> האם המחיר שאנחנו משלמים הגיוני ביחס למה שאנחנו מקבלים?</p>
- <p>הוא בוחן תמחור בהקשר — לא בצורה מכנית.</p>
- <ul>
-   <li>Valuation נוכחי מול היסטורי.</li>
-   <li>Valuation מול הסקטור.</li>
-   <li>Valuation מול Growth.</li>
-   <li>Expectations שכבר מגולמות במחיר.</li>
-   <li>Margin of Safety.</li>
- </ul>
- <p>המטרה היא להבדיל בין Expensive but justified, Expensive and vulnerable, Attractive valuation ו-Cheap for a reason.</p>
- <div class="note"><b>Value Investing בקצרה:</b> לחפש מצב שבו הערך הכלכלי המשוער של העסק גבוה משמעותית מהמחיר שהשוק דורש — יחד עם Margin of Safety.</div>`},
-sentiment:{
- title:"Sentiment Agent",
- body:`<p><b>השאלה:</b> מה השוק חושב ומרגיש לגבי החברה — ולאיזה כיוון התחושה הזו משתנה?</p>
- <ul>
-   <li>Analyst upgrades / downgrades.</li>
-   <li>News tone.</li>
-   <li>שיח ב-X, Reddit, YouTube ומקורות קהילה רלוונטיים.</li>
-   <li>Fear, Hype, Skepticism, Greed.</li>
-   <li>Expectation shifts.</li>
-   <li>Sentiment trend — האם הטון משתפר או מידרדר.</li>
- </ul>
+ <ul><li>חוזק יחסי של הסקטור מול השוק.</li><li>שינויי מומנטום סקטוריאליים.</li><li>Theme concentration בתיק.</li><li>האם הזדמנות היא Company-specific או Sector-wide.</li></ul>`},
+sentiment:{tag:"CONTEXT · MARKET MIND", title:"Sentiment Agent",
+ body:`<p><b>השאלה:</b> מה השוק חושב ומרגיש לגבי החברה, ולאיזה כיוון התחושה הזו משתנה?</p>
+ <ul><li>Analyst upgrades / downgrades.</li><li>News tone.</li><li>שיח ב-X, Reddit, YouTube ומקורות קהילה רלוונטיים.</li><li>Fear, Hype, Skepticism, Greed.</li><li>Expectation shifts.</li><li>Sentiment trend: האם הטון משתפר או מידרדר.</li></ul>
  <p><b>למה הוא נפרד מ-News?</b> News אומר מה קרה; Sentiment אומר איך השוק מפרש את מה שקרה.</p>
  <div class="note"><b>דוגמה:</b> חברה יכולה לפרסם דוחות טובים (Catalyst חיובי) אבל לקבל Sentiment שלילי כי המשקיעים ציפו ליותר.</div>`},
-catalyst:{
- title:"News & Catalysts Agent",
+technical:{tag:"SECURITY · ENTRY / EXIT", title:"Technical Agent",
+ body:`<p><b>השאלה:</b> האם המבנה הטכני מתאים לכניסה, המתנה או יציאה <u>עכשיו</u>?</p>
+ <p><b>Focus:</b> Timing ו-Setup Quality.</p>
+ <ul><li>מגמה קצרה, בינונית וארוכה.</li><li>Moving Averages, תמיכות והתנגדויות.</li><li>Breakout, Pullback, Consolidation.</li><li>Volume, Volatility ומבנה המחיר.</li><li>Technical invalidation: מה יגרום לנו להודות שה-Setup נשבר.</li></ul>
+ <p><b>ההבדל ממומנטום:</b> Technical שואל "האם זה זמן טוב לפעול?", Momentum שואל "האם קיים כוח מתמשך?".</p>
+ <div class="note"><b>דוגמה:</b> מניה יכולה להיות עם Momentum חזק, אבל אחרי ריצה חדה היא Extended מדי ולכן Technical ימליץ WAIT.</div>`},
+momentum:{tag:"SECURITY · CONTINUATION", title:"Momentum Agent",
+ body:`<p><b>השאלה:</b> האם למניה יש כוח מתמשך והאם היא ממשיכה להציג ביצועי יתר?</p>
+ <p><b>Focus:</b> Continuation / Relative Strength.</p>
+ <ul><li>ביצועים ב-1, 3, 6 ו-12 חודשים.</li><li>Relative Strength מול S&amp;P / Nasdaq.</li><li>Relative Strength מול הסקטור.</li><li>Acceleration / Deceleration.</li><li>Earnings Momentum ו-Estimate Revisions.</li><li>האם Volume תומך בתנועה.</li></ul>
+ <p>הוא מנסה להבדיל בין Healthy Momentum לבין Overheated / Crowded Trade.</p>
+ <div class="note"><b>דוגמה:</b> Technical יכול להגיד "Breakout מוצלח", אבל Momentum יבדוק האם זו פריצה בתוך מגמה חזקה או תנועה מקרית בלי המשכיות.</div>`},
+fundamental:{tag:"SECURITY · BUSINESS QUALITY", title:"Fundamental Agent",
+ body:`<p><b>השאלה:</b> האם העסק עצמו איכותי, בריא ומשתפר?</p>
+ <ul><li>Revenue ו-Revenue Growth.</li><li>EPS ו-Earnings Growth.</li><li>Margins ו-Free Cash Flow.</li><li>Debt, Balance Sheet, ROIC.</li><li>Guidance, יציבות עסקית ואיכות הנהלה.</li><li>Competitive position ויכולת לשמור על יתרון.</li></ul>
+ <p>הוא לא מסתפק בצילום מצב, אלא מסווג את העסק כ-Improving / Stable / Deteriorating.</p>
+ <div class="note"><b>חשוב:</b> Fundamental Analysis אינו זהה ל-Value Investing. אפשר למצוא חברה מעולה אבל יקרה מאוד, ולכן קיים Valuation Agent נפרד.</div>`},
+valuation:{tag:"SECURITY · PRICE VS VALUE", title:"Valuation Agent",
+ body:`<p><b>השאלה:</b> האם המחיר שאנחנו משלמים הגיוני ביחס למה שאנחנו מקבלים?</p>
+ <p>הוא בוחן תמחור בהקשר, לא בצורה מכנית.</p>
+ <ul><li>Valuation נוכחי מול היסטורי.</li><li>Valuation מול הסקטור.</li><li>Valuation מול Growth.</li><li>Expectations שכבר מגולמות במחיר.</li><li>Margin of Safety.</li></ul>
+ <p>המטרה היא להבדיל בין Expensive but justified, Expensive and vulnerable, Attractive valuation ו-Cheap for a reason.</p>
+ <div class="note"><b>Value Investing בקצרה:</b> לחפש מצב שבו הערך הכלכלי המשוער של העסק גבוה משמעותית מהמחיר שהשוק דורש, יחד עם Margin of Safety.</div>`},
+catalyst:{tag:"CHALLENGE · WHAT HAPPENED?", title:"News & Catalysts Agent",
  body:`<p><b>השאלה:</b> מה קרה או עומד לקרות שיכול לשנות את התזה?</p>
- <ul>
-   <li>Earnings ו-Guidance.</li>
-   <li>השקת מוצר או שירות.</li>
-   <li>חוזה גדול או אובדן לקוח.</li>
-   <li>M&A.</li>
-   <li>FDA / רגולציה.</li>
-   <li>תביעה, שינוי הנהלה, שותפות אסטרטגית.</li>
- </ul>
+ <ul><li>Earnings ו-Guidance.</li><li>השקת מוצר או שירות.</li><li>חוזה גדול או אובדן לקוח.</li><li>M&amp;A.</li><li>FDA / רגולציה.</li><li>תביעה, שינוי הנהלה, שותפות אסטרטגית.</li></ul>
  <p>הוא מסווג אירועים ל-Positive Catalyst, Negative Catalyst, Binary Event, Known Event, Potential Event או Noise.</p>
- <div class="note">המטרה היא לא לסכם חדשות — אלא להבין אילו חדשות באמת משנות את Investment Thesis.</div>`},
-devil:{
- title:"Devil's Advocate Agent",
+ <div class="note">המטרה היא לא לסכם חדשות, אלא להבין אילו חדשות באמת משנות את Investment Thesis. כל טענה מגיעה עם Evidence: שדה נתונים או כותרת עם מקור.</div>`},
+devil:{tag:"CHALLENGE", title:"Devil's Advocate Agent",
  body:`<p><b>השאלה:</b> למה אסור לנו לבצע את ההשקעה הזו?</p>
  <p>הוא בנוי בכוונה להיות חשדן.</p>
- <ul>
-   <li>Hidden risk.</li>
-   <li>Accounting concerns.</li>
-   <li>Extreme valuation.</li>
-   <li>Debt / dilution.</li>
-   <li>Competition ו-Regulatory risk.</li>
-   <li>Hype / Crowded trade.</li>
-   <li>Binary event.</li>
-   <li>חולשה בתזה שה-Bull case מתעלם ממנה.</li>
- </ul>
+ <ul><li>Hidden risk.</li><li>Accounting concerns.</li><li>Extreme valuation.</li><li>Debt / dilution.</li><li>Competition ו-Regulatory risk.</li><li>Hype / Crowded trade.</li><li>Binary event.</li><li>חולשה בתזה שה-Bull case מתעלם ממנה.</li></ul>
  <p>הוא יכול לסמן <b>Deal Breaker</b> שמחייב דיון מפורש לפני BUY.</p>
  <div class="note">הצלחה שלו נמדדת גם בעסקאות גרועות שהוא מנע, לא רק ביכולת "להיות שלילי".</div>`},
-risk:{
- title:"Risk Agent",
- body:`<p><b>השאלה:</b> גם אם ההשקעה טובה — מה היא עושה לסיכון הכולל שלנו?</p>
+risk:{tag:"CHALLENGE · PORTFOLIO SAFETY", title:"Risk Agent",
+ body:`<p><b>השאלה:</b> גם אם ההשקעה טובה, מה היא עושה לסיכון הכולל שלנו?</p>
  <h4>Security Risk</h4>
  <ul><li>Volatility.</li><li>Drawdown history.</li><li>Event / Gap Risk.</li><li>Liquidity.</li></ul>
  <h4>Portfolio Risk</h4>
- <ul><li>Position concentration.</li><li>Sector / Theme concentration.</li><li>Factor concentration.</li><li>Correlation.</li><li>Cash & total exposure.</li></ul>
+ <ul><li>Position concentration.</li><li>Sector / Theme concentration.</li><li>Factor concentration.</li><li>Correlation.</li><li>Cash &amp; total exposure.</li></ul>
  <p>מניה מצוינת יכולה לקבל WATCH או Position Size קטן אם היא מגדילה סיכון שכבר קיים בתיק.</p>
  <div class="note">Risk Agent אינו אומר "החברה טובה או רעה". הוא אומר "כמה מהסיכון הזה נכון לנו להחזיק?".</div>`},
-alpha:{
- title:"Alpha Agent — הסוכן החופשי",
- body:`<p><b>זהו Agent שונה מכל השאר.</b></p>
- <p>לא מגדירים לו מראש שיטת השקעה. הוא אינו חייב להיות טכני, פונדמנטלי, Value או Momentum.</p>
+alpha:{tag:"FREE AI · CONTROL GROUP", title:"Alpha Agent: הסוכן החופשי",
+ body:`<p><b>זהו Agent שונה מכל השאר.</b> לא מגדירים לו מראש שיטת השקעה. הוא אינו חייב להיות טכני, פונדמנטלי, Value או Momentum.</p>
  <p><b>המטרה שלו:</b> למצוא החלטות בעלות הסיכוי הטוב ביותר לייצר תשואה עודפת ביחס ל-Benchmark, תוך עמידה במגבלות הסיכון.</p>
  <p>הוא יכול:</p>
- <ul>
-   <li>לזהות Pattern שאף Agent אחר לא ראה.</li>
-   <li>להציג Thesis לא קונבנציונלית.</li>
-   <li>לחלוק על Consensus.</li>
-   <li>לטעון שהוועדה Overthinking.</li>
-   <li>להציע Candidate שה-Scanner המסורתי פספס.</li>
- </ul>
- <p>הוא לא מקבל משקל יתר אוטומטי. הוא נמדד לאורך זמן כמו כולם.</p>
- <div class="note"><b>האתגר המעניין:</b> האם ארגון מומחים מובנה ינצח לאורך זמן AI חופשי וחזק — או להפך?</div>`}
+ <ul><li>לזהות Pattern שאף Agent אחר לא ראה.</li><li>להציג Thesis לא קונבנציונלית.</li><li>לחלוק על Consensus.</li><li>לטעון שהוועדה Overthinking.</li><li>להציע Candidate שה-Scanner המסורתי פספס.</li></ul>
+ <p>הוא לא מקבל משקל יתר אוטומטי. הוא נמדד לאורך זמן כמו כולם, ומנהל תיק Shadow משלו במקביל.</p>
+ <div class="note"><b>האתגר המעניין:</b> האם ארגון מומחים מובנה ינצח לאורך זמן AI חופשי וחזק, או להפך? ה-Alpha Agent הוא קבוצת הביקורת של כל התזה.</div>`}
 };
 
 const explainers = {
-  pillars:{
-    title:"שלושת עמודי התווך — למה זה חשוב?",
+  pillars:{tag:"VISION", title:"שלושת עמודי התווך: למה זה חשוב?",
     body:`<p>המערכת לא בנויה סביב "מודל שממליץ על מניה". היא בנויה סביב שלושה רעיונות שמחזקים אחד את השני:</p>
-    <ol>
-      <li><b>Organization:</b> החלטה טובה נוצרת משילוב מומחים, ביקורת ודינמיקה.</li>
-      <li><b>Trust:</b> המערכת חייבת להוכיח את עצמה ב-Shadow Portfolio לפני כסף אמיתי.</li>
-      <li><b>Explainability:</b> המשתמש יכול להבין ולהשתתף, ולא נדרש לקבל "AI says BUY".</li>
-    </ol>`},
-  orgintel:{
-    title:"Organizational Intelligence Agent — הסבר מפורט",
-    body:`<p>זהו "מנהל הפיתוח הארגוני" של בית ההשקעות הסינתטי.</p>
-    <p>הוא לא אומר איזו מניה לקנות. הוא בודק איך הוועדה חושבת:</p>
-    <ul>
-      <li>מי תרם מידע ייחודי?</li><li>מי חזר על אחרים?</li><li>מי היה Overconfident?</li>
-      <li>האם נוצר Groupthink?</li><li>האם דעת מיעוט נכונה נדרסה?</li><li>האם Debate שיפר את ההחלטה?</li>
-    </ul>
+    <ol><li><b>Organization:</b> החלטה טובה נוצרת משילוב מומחים, ביקורת ודינמיקה.</li><li><b>Trust:</b> המערכת חייבת להוכיח את עצמה ב-Shadow Portfolio לפני כסף אמיתי.</li><li><b>Explainability:</b> המשתמש יכול להבין ולהשתתף, ולא נדרש לקבל "AI says BUY".</li></ol>`},
+  orgintel:{tag:"ORGANIZATION", title:"Organizational Intelligence Agent",
+    body:`<p>זהו "מנהל הפיתוח הארגוני" של בית ההשקעות הסינתטי. הוא לא אומר איזו מניה לקנות. הוא בודק איך הוועדה חושבת:</p>
+    <ul><li>מי תרם מידע ייחודי?</li><li>מי חזר על אחרים?</li><li>מי היה Overconfident?</li><li>האם נוצר Groupthink?</li><li>האם דעת מיעוט נכונה נדרסה?</li><li>האם Debate שיפר את ההחלטה?</li></ul>
     <p>לאחר מכן הוא יכול לייצר Improvement Tasks לסוכנים ולהציע שינויי תפקיד, כיול או דגש.</p>
     <div class="note">המטרה היא ליצור ארגון דיגיטלי "אורגני": כזה שמפתח את העובדים שלו ולא רק משנה מספרים.</div>`},
-  shadow:{
-    title:"Shadow Portfolio & Trust Engine — הסבר מפורט",
-    body:`<p>זהו מנגנון בניית האמון המרכזי.</p>
-    <p>המערכת רצה על נתוני שוק אמיתיים, מקבלת החלטות כאילו מדובר בכסף אמיתי, ופותחת/סוגרת פוזיציות וירטואליות בזמן אמת.</p>
+  shadow:{tag:"TRUST", title:"Shadow Portfolio & Trust Engine",
+    body:`<p>זהו מנגנון בניית האמון המרכזי. המערכת רצה על נתוני שוק אמיתיים, מקבלת החלטות כאילו מדובר בכסף אמיתי, ופותחת וסוגרת פוזיציות וירטואליות בזמן אמת.</p>
     <p>בסוף כל תקופה נבדקים:</p>
-    <ul>
-      <li>Return ו-Drawdown.</li><li>ביצועים מול Benchmarks.</li><li>Missed Opportunities ו-Avoided Losses.</li>
-      <li>Score/Confidence/Urgency Calibration.</li><li>ביצועי Agents.</li><li>Champion vs Challenger.</li>
-    </ul>
+    <ul><li>Return ו-Drawdown.</li><li>ביצועים מול Benchmarks.</li><li>Missed Opportunities ו-Avoided Losses.</li><li>Score / Confidence / Urgency Calibration.</li><li>ביצועי Agents.</li><li>Champion vs Challenger.</li></ul>
     <p>רק לאחר Track Record מספיק יציב ניתן להתקדם ל-Limited Adoption בכסף אמיתי.</p>`},
-  debate:{
-    title:"איך הוויכוח בין הסוכנים עובד?",
-    body:`<p>הסוכנים מגיעים מוכנים לוועדה. אם יש Consensus ברור — ההחלטה מהירה. אם יש מחלוקת מהותית — נפתח Debate.</p>
+  debate:{tag:"PROCESS", title:"איך הוויכוח בין הסוכנים עובד?",
+    body:`<p>הסוכנים מגיעים מוכנים לוועדה. אם יש Consensus ברור, ההחלטה מהירה. אם יש מחלוקת מהותית, נפתח Debate.</p>
     <p>במהלך הדיון Agent יכול:</p>
-    <ul>
-      <li>להגן על העמדה שלו.</li><li>לשנות Confidence.</li><li>לשנות Recommendation.</li><li>לקבל טיעון של Agent אחר.</li>
-    </ul>
+    <ul><li>להגן על העמדה שלו.</li><li>לשנות Confidence.</li><li>לשנות Recommendation.</li><li>לקבל טיעון של Agent אחר.</li></ul>
     <p>המערכת מתעדת מי שינה את דעתו, איזה טיעון השפיע, ומה קרה בדיעבד.</p>
-    <div class="note">השפעה לא נקבעת לפי "מי משכנע יפה", אלא לפי Evidence, Calibration ו-Track Record.</div>`}
+    <div class="note">השפעה לא נקבעת לפי "מי משכנע יפה", אלא לפי Evidence, Calibration ו-Track Record.</div>`},
+  participant:{tag:"INTERFACE", title:"Participant Mode",
+    body:`<p>המשתמש יכול להפוך לחבר ועדה פעיל בלי להיות חייב לנהל את התהליך כולו.</p>
+    <ul><li>לשאול Agent ספציפי: "למה עכשיו?"</li><li>לבקש מה-Devil's Advocate להקשות יותר.</li><li>לשאול את Risk מה יקרה אם נגדיל את הפוזיציה.</li><li>להעלות טענה חדשה ולבקש מהוועדה להתמודד איתה.</li></ul>
+    <div class="note">החוויה נשארת מהירה: כל חומרי המחקר הוכנו מראש לפני כניסת המשתמש לוועדה. שאלות והתערבויות נרשמות ב-Journal.</div>`}
 };
-function openExplainer(key){
-  const x = explainers[key];
-  openModal(x.title,x.body);
-}
-function openModal(title,body){
-  document.getElementById('modal-content').innerHTML=`<h3>${title}</h3>${body}`;
+
+function openModal(tag,title,body){
+  document.getElementById('modal-content').innerHTML=`<div class="tag">${tag}</div><h3>${title}</h3>${body}`;
   document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
 }
-function closeModal(){document.getElementById('modal').classList.remove('open')}
-function openUserMode(){
-  openModal("Participant Mode",`
-    <p>המשתמש יכול להפוך לחבר ועדה פעיל בלי להיות חייב לנהל את התהליך כולו.</p>
-    <ul>
-      <li>לשאול Agent ספציפי: "למה עכשיו?"</li>
-      <li>לבקש מה-Devil's Advocate להקשות יותר.</li>
-      <li>לשאול את Risk מה יקרה אם נגדיל את הפוזיציה.</li>
-      <li>להעלות טענה חדשה ולבקש מהוועדה להתמודד איתה.</li>
-    </ul>
-    <div class="note">החוויה נשארת מהירה: כל חומרי המחקר הוכנו מראש לפני כניסת המשתמש לוועדה.</div>
-  `)
-}
+function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}
+function openExplainer(key){const x=explainers[key];openModal(x.tag,x.title,x.body)}
+document.querySelectorAll('.agent[data-key]').forEach(el=>{
+  el.addEventListener('click',()=>{const d=details[el.dataset.key];openModal(d.tag,d.title,d.body)});
+});
 document.addEventListener('keydown',e=>{if(e.key==='Escape') closeModal()});
 </script>
 </body>
