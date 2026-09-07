@@ -229,7 +229,7 @@ details.agent-detail[open] summary::before{content:"−"}
       <a href="#vision">החזון</a>
       <a href="#org">הסוכנים</a>
       <a href="#flow">איך זה עובד</a>
-      <a href="#shadow">Shadow Portfolio</a>
+      <a href="#calibration">כיול</a><a href="#shadow">Shadow Portfolio</a>
       <a href="#ux">הממשק</a>
     </div>
   </div>
@@ -238,10 +238,11 @@ details.agent-detail[open] summary::before{content:"−"}
 <header class="hero">
   <div class="wrap">
     <span class="kicker">Personal AI Investment Committee</span>
-    <h1>לא עוד בוט שממליץ על מניות.<br/>בית השקעות סינתטי שלומד להשתפר.</h1>
+    <h1>לא עוד AI שבוחר מניות.<br/>בית השקעות סינתטי שלומד להשתפר.</h1>
     <p>
-      ארגון דיגיטלי של מומחי AI, שכל אחד מנתח את השוק מזווית אחרת, מגיע מוכן לוועדת השקעות,
-      מתווכח, משתכנע, מקבל החלטה — ואז נמדד לאורך זמן בתוך Shadow Portfolio אמיתי.
+      במקום לבקש ממודל אחד לבחור מניה, המערכת בונה ארגון השקעות שלם: מומחי AI עם תפקידים שונים,
+      ועדת השקעות, ביקורת פנימית, תיק וירטואלי חי ומנגנון למידה. המטרה פשוטה למדידה:
+      האם הארגון הזה מקבל החלטות טובות יותר מהמדד — וטובות יותר מ-AI יחיד וחזק?
     </p>
     <div class="cta-row">
       <a class="btn btn-primary" href="#org">הכירו את הארגון</a>
@@ -394,6 +395,31 @@ Organizational Intelligence Agent הוא “מנהל הפיתוח הארגוני
   </div>
 </section>
 
+
+<section class="section" id="proof">
+  <div class="wrap">
+    <h2>המבחן האמיתי: האם כל המורכבות הזו מוסיפה ערך?</h2>
+    <p class="section-intro">המערכת לא מקבלת נקודות על תחכום. היא צריכה לנצח Baselines פשוטים וברורים.</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="pillar-num">1</div>
+        <h3>Benchmark</h3>
+        <p>האם לאורך זמן היא מייצרת תשואה עודפת — ובאופן אידיאלי גם תשואה מתואמת־סיכון טובה יותר — ממדד פסיבי רלוונטי?</p>
+      </div>
+      <div class="card">
+        <div class="pillar-num">2</div>
+        <h3>Single AI / Alpha</h3>
+        <p>האם הארגון כולו טוב יותר מ-Agent חופשי אחד שמקבל את אותה מטרה, אותם נתונים ואותן מגבלות סיכון?</p>
+      </div>
+      <div class="card">
+        <div class="pillar-num">3</div>
+        <h3>OEI</h3>
+        <p><b>Organizational Effectiveness Index</b> — האם איכות הדיון, הכיול, תרומת הסוכנים והלמידה הארגונית משתפרות לאורך זמן?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="shadow">
   <div class="wrap">
     <h2>Shadow Portfolio — המערכת צריכה להרוויח את האמון</h2>
@@ -423,6 +449,60 @@ Organizational Intelligence Agent הוא “מנהל הפיתוח הארגוני
         <div class="metric"><span>Confidence Calibration</span><b>Improving</b></div>
       </div>
     </div>
+  </div>
+</section>
+
+
+<section class="section" id="calibration">
+  <div class="wrap">
+    <h2>Calibration Engine — לצבור שנות ניסיון בלי לחכות שנים</h2>
+    <p class="section-intro">
+      הארגון יכול "לחיות מחדש" תקופות היסטוריות יום אחרי יום. בכל נקודת זמן הוא אמור לראות רק את המידע שהיה זמין אז,
+      לקבל החלטה, ורק לאחר מכן להתקדם בזמן.
+    </p>
+    <div class="split">
+      <div class="card">
+        <h3>Historical Replay</h3>
+        <p>המערכת מכיילת לא רק Strategy אלא גם כל Agent, איכות Debate, משקלי השפעה ומבנה ארגוני. כך ניתן לבצע למידה מואצת על Bull, Bear, משברים ושינויי Regime.</p>
+        <details class="agent-detail">
+          <summary>איך מונעים מהסוכנים "לרמות"?</summary>
+          <div class="agent-detail-body">
+            Integrity & Validation הוא חלק ממנוע הכיול. הוא אוכף Point-in-Time Data, מונע Look-Ahead Bias ו-Data Leakage,
+            בודק מתי מידע באמת פורסם ושומר שהחלטה היסטורית תתבסס רק על מה שהיה ניתן לדעת באותו רגע.
+            חשוב: גם עם מנגנון כזה, Backtest אינו הוכחה. Foundation models עלולים להכיל ידע היסטורי מהאימון שלהם,
+            ולכן האימות המכריע נשאר Forward / Shadow testing.
+          </div>
+        </details>
+      </div>
+      <div class="card">
+        <h3>Learn → Validate Forward</h3>
+        <p>העבר משמש לאימון וכיול. העתיד משמש להוכחה. שיפור שמופיע רק ב-Replay אך נעלם ב-Shadow Portfolio הוא חשוד כ-Overfitting.</p>
+        <div class="note" style="margin-top:16px">
+          המטרה אינה למצוא Strategy מושלמת על העבר — אלא לפתח ארגון שמסוגל להסתגל גם לתקופה שהוא עדיין לא ראה.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="readiness">
+  <div class="wrap">
+    <h2>המערכת צריכה להרוויח את הזכות לנהל הון</h2>
+    <p class="section-intro">Readiness הוא Gate דינמי, לא תעודת הצטיינות חד־פעמית.</p>
+    <div class="flow" style="grid-template-columns:repeat(4,1fr)">
+      <div class="step"><div class="n">01</div><strong>Research</strong><small>ניתוח, Replay וכיול בלבד.</small></div>
+      <div class="step"><div class="n">02</div><strong>Shadow</strong><small>החלטות חיות על כסף וירטואלי.</small></div>
+      <div class="step"><div class="n">03</div><strong>Limited Capital</strong><small>הון אמיתי מוגבל לאחר עמידה בתנאי מוכנות.</small></div>
+      <div class="step"><div class="n">04</div><strong>Scale Up / Down</strong><small>המנדט גדל או קטן בהתאם לביצועים ולסיכון.</small></div>
+    </div>
+    <details class="agent-detail" style="margin-top:16px">
+      <summary>ממה מורכב Readiness Score?</summary>
+      <div class="agent-detail-body">
+        ביצועים מול Benchmark, ביצועים מול Single-Agent baseline, Drawdown, Risk-adjusted return, יציבות בין Regimes,
+        Calibration של Confidence, איכות נתונים, מספר החלטות, משך Forward validation, Robustness ו-OEI.
+        אין מדד יחיד שמאפשר למערכת "לעבור".
+      </div>
+    </details>
   </div>
 </section>
 
@@ -500,10 +580,84 @@ Organizational Intelligence Agent הוא “מנהל הפיתוח הארגוני
   </div>
 </section>
 
+
+<section class="section" id="why-now">
+  <div class="wrap">
+    <h2>למה דווקא עכשיו?</h2>
+    <div class="grid3">
+      <div class="card"><h3>מודלים חזקים יותר</h3><p>LLMs כבר מסוגלים לעבוד עם טקסט, נתונים, כלים והקשר ברמה שמאפשרת חלוקת עבודה אמיתית בין מומחים.</p></div>
+      <div class="card"><h3>Agentic AI</h3><p>אפשר לבנות תהליכים שבהם Agents חוקרים, מבקרים, מעבירים Evidence ומגיעים להחלטה משותפת במקום Prompt חד־פעמי.</p></div>
+      <div class="card"><h3>יכולת מדידה</h3><p>אפשר להשוות ארכיטקטורות, לבצע Replay מבוקר ולהפעיל Forward Shadow Portfolio כדי לבדוק האם הארגון באמת מוסיף Edge.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="model-agnostic">
+  <div class="wrap">
+    <h2>אנחנו לא בונים LLM. אנחנו בונים את הארגון שמעליו.</h2>
+    <p class="section-intro">
+      ה-LLM הוא המנוע — והוא ניתן להחלפה. הנכס הוא מערכת התפקידים, הוועדה, הזיכרון, תהליך ההחלטה,
+      ה-Track Record, מנגנוני הכיול והידע שהארגון צובר על עצמו.
+    </p>
+    <div class="org">
+      <div class="flow" style="grid-template-columns:repeat(3,1fr)">
+        <div class="step"><div class="n">LAYER 1</div><strong>Models</strong><small>Open / closed models. אפשר להחליף מנוע עם הזמן.</small></div>
+        <div class="step"><div class="n">LAYER 2</div><strong>Agents</strong><small>תפקיד, מומחיות, זיכרון, Evidence ו-Track Record.</small></div>
+        <div class="step"><div class="n">LAYER 3</div><strong>Synthetic Investment House</strong><small>ועדה, Governance, Portfolio, Risk, Calibration ולמידה ארגונית.</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="moat">
+  <div class="wrap">
+    <h2>הרעיון פשוט להסביר. הביצוע הוא החלק הקשה.</h2>
+    <p class="section-intro">וזה בדיוק המקום שבו עשוי להיווצר הבידול.</p>
+    <div class="split">
+      <div class="card">
+        <h3>מה צריך לפצח?</h3>
+        <p>נתוני Point-in-Time אמינים, מניעת Leakage, תזמור Agents, Portfolio & Risk logic, Attribution,
+        Debate שאינו הופך ל-Groupthink, כיול בלי Overfitting ויכולת להפריד בין החלטה טובה לבין תוצאה מקרית.</p>
+      </div>
+      <div class="card">
+        <h3>מה יכול להפוך ל-Moat?</h3>
+        <p>לא Prompt סודי. אלא ניסיון מצטבר: Decision Journal, Agent track records, Strategy versions,
+        Organizational memory, נתוני כיול והיכולת לדעת איזה מבנה ארגוני עובד באיזה Market Regime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="evidence">
+  <div class="wrap">
+    <h2>מה המחקר כבר מרמז?</h2>
+    <p class="section-intro">יש סימנים מעודדים — וגם סיבה טובה להיות סקפטיים. זו תזה שצריך להוכיח, לא הנחה.</p>
+    <div class="grid3">
+      <div class="card">
+        <h3>Specialization יכולה לעזור</h3>
+        <p>מחקר מ-2026 על Expert Investment Teams מצא שפירוק משימות פיננסיות לתפקידים עדינים שיפר תשואה מתואמת־סיכון לעומת מבנים גסים יותר, תחת Backtest מבוקר Leakage.</p>
+      </div>
+      <div class="card">
+        <h3>Debate אינו קסם</h3>
+        <p>מחקר Macro multi-agent מ-2026 מצא ש-Debate Agent לא ניצח את ה-Agent היחיד הטוב ביותר; התרומה שלו הייתה בעיקר תיקון Bias. כלומר, צריך למדוד את ערך התיאום עצמו.</p>
+      </div>
+      <div class="card">
+        <h3>Backtests עלולים להטעות</h3>
+        <p>מחקר ארוך-טווח מ-2025 מצא שיתרונות של אסטרטגיות LLM נחלשו מאוד כאשר הרחיבו את התקופה והיקום. מחקר CEPR מ-2026 מדגיש שגם ידע האימון של המודל עצמו יוצר Look-Ahead challenge.</p>
+      </div>
+    </div>
+    <div class="note" style="margin-top:18px">
+      <b>השאלה שאנחנו יוצאים להוכיח:</b>
+      האם ארגון AI מתמחה, מתווכח, מודד ומפתח את עצמו מסוגל לייצר יתרון עקבי על פני Benchmark
+      ועל פני Agent יחיד חזק — אחרי עלויות, לאורך Regimes שונים ובבדיקה קדימה בזמן?
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="wrap">
     <b>Synthetic Investment House</b>
-    <div>Complexity inside. Discipline inside. Intelligence through organization. Simplicity outside.</div>
+    <div>Complexity inside. Discipline inside. The system earns the right to manage capital.</div>
   </div>
 </footer>
 
